@@ -1,0 +1,26 @@
+#hero{
+	h1{
+		width: 705px;
+		line-height: 130%;
+		letter-spacing: -0.025em;
+	}
+	p{
+		line-height: 185%;
+		letter-spacing: -0.025em;
+		width: 585px;
+		margin: 85px 0;
+	}
+	.input-wrapper{
+		display: flex;
+		input{
+			margin-right: 15px;
+		}
+	}
+	#hero-image{
+		position: absolute;
+		z-index: -1;
+		right: -215px;
+		bottom: 0;
+		height: 100%;
+	}
+}

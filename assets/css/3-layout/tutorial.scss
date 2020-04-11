@@ -1,0 +1,25 @@
+#tutorial{
+	align-items: flex-end;
+	#tutorial-content{
+		h1{
+			font-size: 3rem;
+			width: 615px;
+			letter-spacing: -0.025em;
+			line-height: 135%;
+			margin-bottom: 55px;
+		}
+		p{
+			font-size: 1.5rem;
+			line-height: 150%;
+			letter-spacing: -0.025em;
+			width: 880px;
+			margin-bottom: 28px;
+		}
+	}
+	#tutorial-image{
+		position: absolute;
+		height: 100%;
+		left: -100px;
+		bottom: 0;
+	}
+}

@@ -1,0 +1,33 @@
+input{
+	height: 48px;
+	width: 345px;
+	box-sizing: border-box;
+	padding: 18px 20px;
+	font-family: Montserrat Regular;
+	font-size: 14px;
+	outline: none;
+	border: 1px solid $blue;
+	border-radius: 2px;
+	color: $blue;
+	text-transform: capitalize;
+	&::placeholder{
+		color: transparentize($blue, 0.5);
+		font-style: italic;
+		text-transform: none;
+	}
+}
+
+.button{
+	height: 48px;
+	width: 225px;
+	background-color: $blue;
+	color: #fff;
+	font-family: Montserrat Bold;
+	font-size: 1.125rem;
+	letter-spacing: -0.025em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+	cursor: pointer;
+}

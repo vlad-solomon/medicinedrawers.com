@@ -1,0 +1,11 @@
+h1{
+	font-family: Montserrat Bold;
+	font-size: 4rem;
+	color: $blue;
+}
+
+p{
+	font-family: Montserrat Regular;
+	font-size: 1.125rem;
+	color: transparentize($blue, 0.2);
+}

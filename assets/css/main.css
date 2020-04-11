@@ -1,0 +1,178 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("../fonts/Montserrat-Bold.ttf");
+}
+@font-face {
+  font-family: "Monserrat Regular";
+  src: url("../fonts/Montserrat-Regular.ttf");
+}
+@font-face {
+  font-family: "Tiempos Text Regular";
+  src: url("../fonts/TiemposText-Regular.ttf");
+}
+h1 {
+  font-family: Montserrat Bold;
+  font-size: 4rem;
+  color: #004687;
+}
+
+p {
+  font-family: Montserrat Regular;
+  font-size: 1.125rem;
+  color: rgba(0, 70, 135, 0.8);
+}
+
+input {
+  height: 48px;
+  width: 345px;
+  box-sizing: border-box;
+  padding: 18px 20px;
+  font-family: Montserrat Regular;
+  font-size: 14px;
+  outline: none;
+  border: 1px solid #004687;
+  border-radius: 2px;
+  color: #004687;
+  text-transform: capitalize;
+}
+input::placeholder {
+  color: rgba(0, 70, 135, 0.5);
+  font-style: italic;
+  text-transform: none;
+}
+
+.button {
+  height: 48px;
+  width: 225px;
+  background-color: #004687;
+  color: #fff;
+  font-family: Montserrat Bold;
+  font-size: 1.125rem;
+  letter-spacing: -0.025em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+html,
+body,
+.page-content {
+  height: 100%;
+}
+
+:root {
+  font-size: 16px;
+}
+
+.container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 1425px;
+  margin: 0 auto;
+}
+
+#hero h1 {
+  width: 705px;
+  line-height: 130%;
+  letter-spacing: -0.025em;
+}
+#hero p {
+  line-height: 185%;
+  letter-spacing: -0.025em;
+  width: 585px;
+  margin: 85px 0;
+}
+#hero .input-wrapper {
+  display: flex;
+}
+#hero .input-wrapper input {
+  margin-right: 15px;
+}
+#hero #hero-image {
+  position: absolute;
+  z-index: -1;
+  right: -215px;
+  bottom: 0;
+  height: 100%;
+}
+
+#tutorial {
+  align-items: flex-end;
+}
+#tutorial #tutorial-content h1 {
+  font-size: 3rem;
+  width: 615px;
+  letter-spacing: -0.025em;
+  line-height: 135%;
+  margin-bottom: 55px;
+}
+#tutorial #tutorial-content p {
+  font-size: 1.5rem;
+  line-height: 150%;
+  letter-spacing: -0.025em;
+  width: 880px;
+  margin-bottom: 28px;
+}
+#tutorial #tutorial-image {
+  position: absolute;
+  height: 100%;
+  left: -100px;
+  bottom: 0;
+}
