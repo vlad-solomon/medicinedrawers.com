@@ -104,6 +104,119 @@ input::placeholder {
   align-items: center;
   border-radius: 2px;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  height: 255px;
+  width: 345px;
+  background-color: #fff;
+  color: #004687;
+  border: 1px solid #004687;
+  border-radius: 2px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 5px rgba(0, 70, 135, 0.05);
+  margin-bottom: 15px;
+  transition: all 200ms, opacity 200ms linear 0s;
+  cursor: pointer;
+  opacity: 0;
+}
+.card:hover {
+  background-color: #004687;
+  color: #fff;
+  transform: scale(1.04);
+}
+.card.visible {
+  transition: all 200ms, opacity 200ms linear 100ms;
+  opacity: 1;
+}
+.card.reading::before, .card.read::before {
+  content: "still reading";
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  color: #004687;
+  font-family: Montserrat Bold;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  border: 1px solid #004687;
+  border-radius: 2px;
+  transition: 200ms;
+  font-size: 0.8rem;
+}
+.card.read {
+  opacity: 0.4;
+}
+.card.read::before {
+  content: "read";
+  background-color: #004687;
+  color: #fff;
+}
+.card.reading:hover::before, .card.read:hover::before {
+  color: #fff;
+  border-color: #fff;
+}
+.card .read-time {
+  position: absolute;
+  font-family: Montserrat Regular;
+  font-style: italic;
+  font-size: 0.875rem;
+  top: 15px;
+  right: 15px;
+  opacity: 0.6;
+}
+.card .card-name {
+  position: absolute;
+  left: 15px;
+  bottom: 20px;
+  font-family: Tiempos Text Regular;
+  font-size: 1.875rem;
+  font-style: italic;
+}
+
+.drawer {
+  margin-bottom: 30px;
+}
+.drawer .drawer-title {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-family: Montserrat Bold;
+  font-size: 3rem;
+  letter-spacing: -0.045em;
+  color: #004687;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: 200ms;
+}
+.drawer .drawer-title.active {
+  opacity: 1;
+}
+.drawer .drawer-title img {
+  top: -4px;
+  position: relative;
+  margin-left: 15px;
+  transition: 200ms;
+}
+.drawer .drawer-title img::selection {
+  background-color: none;
+}
+.drawer .drawer-title img.rotate {
+  transform: rotate(90deg);
+}
+.drawer .drawer-title:hover {
+  opacity: 1;
+}
+.drawer .drawer-title::selection {
+  background-color: none;
+}
+.drawer .cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-height: 0;
+  overflow: hidden;
+  transition: 200ms;
 }
 
 html,
@@ -175,4 +288,111 @@ body,
   height: 100%;
   left: -100px;
   bottom: 0;
+}
+
+#dashboard {
+  display: block;
+  box-sizing: border-box;
+  padding: 80px 0;
+  height: auto;
+}
+#dashboard .greeting {
+  margin-bottom: 80px;
+}
+#dashboard .greeting h1 {
+  font-size: 3rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 10px;
+}
+#dashboard .greeting p {
+  font-size: 1.875rem;
+  letter-spacing: -0.025em;
+}
+
+#lesson {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  max-width: 100%;
+  height: 100%;
+  transform: translateY(-100%);
+  transition: 200ms;
+  overflow: auto;
+  display: block;
+}
+#lesson .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: auto;
+  padding-bottom: 50px;
+}
+#lesson .container .side-menu {
+  width: 240px;
+  margin-top: 165px;
+  order: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+}
+#lesson .container .side-menu .quick-chapters {
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid #004687;
+  border-radius: 2px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+#lesson .container .side-menu .quick-chapters span {
+  font-family: Timepos Text Regular;
+  font-style: italic;
+  color: #004687;
+  letter-spacing: 0.02em;
+  display: block;
+  margin-bottom: 25px;
+}
+#lesson .container .side-menu .quick-chapters span:last-of-type {
+  margin: 0;
+}
+#lesson .container .side-menu .button {
+  width: 100%;
+  transition: 200ms;
+  border: 1px solid #004687;
+}
+#lesson .container .side-menu .button:hover {
+  background-color: #fff;
+  color: #004687;
+}
+#lesson .container .side-menu .button.pressed {
+  background-color: #fff;
+  color: #004687;
+}
+#lesson .container .lesson-content {
+  margin-top: 50px;
+  width: 1125px;
+}
+#lesson .container .lesson-content h1 {
+  font-size: 3rem;
+  margin: 30px 0;
+}
+#lesson .container .lesson-content p {
+  font-family: Tiempos Text Regular;
+  font-size: 1.125rem;
+  line-height: 180%;
+  text-align: justify;
+  letter-spacing: 0.02em;
+  margin-bottom: 30px;
+}
+#lesson .container .lesson-content #back {
+  position: absolute;
+  top: 95px;
+  left: -50px;
+  cursor: pointer;
+  transition: 200ms;
+}
+#lesson .container .lesson-content #back:hover {
+  transform: scale(1.5);
 }

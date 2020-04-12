@@ -1,0 +1,43 @@
+.drawer{
+	margin-bottom: 30px;
+	.drawer-title{
+		display: inline-block;
+		margin-bottom: 15px;
+		font-family: Montserrat Bold;
+		font-size: 3rem;
+		letter-spacing: -0.045em;
+		color: $blue;
+		opacity: 0.8;
+		cursor: pointer;
+		transition: 200ms;
+		&.active{
+			opacity: 1;
+		}
+		img{
+			top: -4px;
+			position: relative;
+			margin-left: 15px;
+			transition: 200ms;
+			&::selection{
+				background-color: none;
+			}
+			&.rotate{
+				transform: rotate(90deg);
+			}
+		}
+		&:hover{
+			opacity: 1;
+		}
+		&::selection{
+			background-color: none;
+		}
+	}
+	.cards-wrapper{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		max-height: 0;
+		overflow: hidden;
+		transition: 200ms;
+	}
+}

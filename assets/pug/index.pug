@@ -6,5 +6,46 @@ html(lang="en")
 	body
 		.page-content
 			//- include includes/hero
-			include includes/tutorial
-			
+			//- include includes/tutorial
+			.container#dashboard
+				.greeting
+					h1 Good morning, John!
+					p Welcome back to Medicine Drawers
+				.drawer
+					span.drawer-title Circulatory System
+						img(src="assets/img/expand.svg", alt="")
+					.cards-wrapper
+						.card(data-lesson="pages/lesson1")
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card(data-lesson="pages/lesson2")
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+				.drawer
+					span.drawer-title Circulatory System
+						img(src="assets/img/expand.svg", alt="")
+					.cards-wrapper
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+						.card
+							span.read-time 5 min.
+							span.card-name Introduction
+			.container#lesson
+
+
+
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+	script(src="assets/js/app.js")
