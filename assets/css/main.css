@@ -225,6 +225,7 @@ html,
 body,
 .page-content {
   height: 100%;
+  overflow-x: hidden;
 }
 
 :root {
@@ -243,6 +244,9 @@ body,
   margin: 0 auto;
 }
 
+#hero {
+  transition: 1s;
+}
 #hero h1 {
   width: 705px;
   line-height: 130%;
@@ -270,6 +274,9 @@ body,
 
 #tutorial {
   align-items: flex-end;
+  transform: translate(100vw);
+  transition: 1s;
+  opacity: 0;
 }
 #tutorial #tutorial-content h1 {
   font-size: 3rem;
@@ -297,6 +304,8 @@ body,
   box-sizing: border-box;
   padding: 80px 0;
   height: auto;
+  transition: 1s;
+  transform: translateX(100vw);
 }
 #dashboard .greeting {
   margin-bottom: 80px;
@@ -353,6 +362,7 @@ body,
 }
 #lesson .container .side-menu .quick-chapters span {
   font-family: Timepos Text Regular;
+  font-weight: 600;
   font-size: 1.25rem;
   font-style: italic;
   color: #004687;
@@ -362,6 +372,13 @@ body,
 }
 #lesson .container .side-menu .quick-chapters span:last-of-type {
   margin: 0;
+}
+#lesson .container .side-menu .quick-chapters span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+#lesson .container .side-menu .quick-chapters span.nested {
+  margin-left: 25px;
 }
 #lesson .container .side-menu .button {
   width: 100%;

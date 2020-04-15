@@ -35,6 +35,7 @@
 				margin-bottom: 15px;
 				span{
 					font-family: Timepos Text Regular;
+					font-weight: 600;
 					font-size: 1.25rem;
 					font-style: italic;
 					color: $blue;
@@ -43,6 +44,13 @@
 					margin-bottom: 25px;
 					&:last-of-type{
 						margin: 0;
+					}
+					&:hover{
+						text-decoration: underline;
+						cursor: pointer;
+					}
+					&.nested{
+						margin-left: 25px 
 					}
 				}
 			}

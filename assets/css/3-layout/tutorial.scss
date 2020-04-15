@@ -1,5 +1,8 @@
 #tutorial{
 	align-items: flex-end;
+	transform: translate(100vw);
+	transition: 1s;
+	opacity: 0;
 	#tutorial-content{
 		h1{
 			font-size: 3rem;
