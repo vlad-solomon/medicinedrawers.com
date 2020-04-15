@@ -37,7 +37,8 @@
 		font-size: 0.8rem;
 	}
 	&.read{
-		opacity: 0.4;
+		// opacity: 0.4;
+		// transition-delay: 1s;
 	}
 	&.read::before{
 		content: 'read';

@@ -31,4 +31,9 @@ input{
 	border-radius: 2px;
 	cursor: pointer;
 	box-sizing: border-box;
+	&#sign-in{
+		opacity: 0;
+		pointer-events: none;
+		transition: 200ms;
+	}
 }

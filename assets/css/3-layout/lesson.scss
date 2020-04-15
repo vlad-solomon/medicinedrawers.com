@@ -35,6 +35,7 @@
 				margin-bottom: 15px;
 				span{
 					font-family: Timepos Text Regular;
+					font-size: 1.25rem;
 					font-style: italic;
 					color: $blue;
 					letter-spacing: 0.02em;
@@ -56,6 +57,7 @@
 				&.pressed{
 					background-color: #fff;
 					color: $blue;
+					pointer-events: none;
 				}
 			}
 		}
@@ -69,10 +71,12 @@
 			p{
 				font-family: Tiempos Text Regular;
 				font-size: 1.125rem;
+				font-weight: 600;
 				line-height: 180%;
 				text-align: justify;
 				letter-spacing: 0.02em;
 				margin-bottom: 30px;
+				color: transparentize($blue, 0.2);
 			}
 			#back{
 				position: absolute;
