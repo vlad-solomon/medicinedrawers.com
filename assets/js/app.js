@@ -25,12 +25,12 @@ $(document).ready(function() {
 					"transform" : "none",
 					"opacity" : "1"
 				})
-				//
+
 				var userName = $("input").val().trim();
 				$("#user-name").append(userName);
 				$(this).css("pointer-events" , "none")
 				localStorage.setItem("userName", userName);
-				// 
+
 				$("#close-tutorial").click(function(){
 					$("#tutorial").css({
 						"transform" : "translateX(-100vw)",
@@ -57,13 +57,28 @@ $(document).ready(function() {
 
 		if(localStorage.getItem("userName")){
 			$("#dashboard").load("./assets/html/includes/dashboard.html" , function(){
+
 				$("#user-name").append(localStorage.getItem("userName"))
+
+				
+				var time = new Date();
+				var hour = time.getHours();
+
+				if(hour >= 5 && hour < 12){
+					$("#time-of-day").html("Good morning")
+				} else if(hour >= 12 && hour < 17){
+					$("#time-of-day").html("Good afternoon")
+				} else{
+					$("#time-of-day").html("Good evening")
+				}
+
 
 				var drawer = document.getElementsByClassName("drawer-title");
 				var k;
 
 				for (k = 0; k < drawer.length; k++) {
-						drawer[k].addEventListener("click", function() {
+
+					drawer[k].addEventListener("click", function() {
 						this.children[0].classList.toggle("rotate");
 						this.classList.toggle("active");
 						var cardsWrapper = this.nextElementSibling;
@@ -74,8 +89,10 @@ $(document).ready(function() {
 							cardsWrapper.style.maxHeight = cardsWrapper.scrollHeight + "px";
 							cardsWrapper.style.overflow = "visible";
 						}
-						$(this).siblings(".cards-wrapper").children().toggleClass("visible");
-						});
+						$(this).siblings(".cards-wrapper").children(".card").toggleClass("visible");
+						$(this).siblings(".cards-wrapper").children(".completion-tracker").toggleClass("visible");
+					});
+
 				}
 
 				var readingCards = localStorage.getItem("readingCards")!==null?localStorage.getItem("readingCards"):'';
@@ -93,28 +110,27 @@ $(document).ready(function() {
 
 			    });
 
-			 	// console.log($(".reading").length)
-			 	// console.log($(".read").length)
+			 	function calculateCompletion(){
+				 	$(".drawer").each(function(){
+				 		var countRead = $(this).children(".cards-wrapper").children(".read").length
+				 		var countTotal = $(this).children(".cards-wrapper").children(".card").length
+				 		var completionTracker = $(this).children(".cards-wrapper").children(".completion-tracker")
 
-			 	$(".drawer").each(function(){
-			 		var finished = $(this).children(".cards-wrapper").children(".read").length
-			 		var total = $(this).children(".cards-wrapper").children(".card").length
-			 		var completionTracker = $(this).children(".cards-wrapper").children(".completion-tracker")
-			 		console.log("this chapter has this many cards:" +total)
-			 		console.log("you read this many cards:" + finished)
+				 		var calculatePercentage = (100 * countRead) / countTotal
 
-			 		var calculatePercentage = (100 * finished) / total
+				 		if(countRead == 0){
+				 			completionTracker.html("You haven't finished any chapter from this section")
+				 		} else if(countRead == countTotal){
+				 			completionTracker.html("You have completed this section")
+				 		} else if(countRead == 1){
+				 			completionTracker.html("You completed " + countRead + " chapter from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 		} else{
+				 			completionTracker.html("You completed " + countRead + " chapters from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 		}
+				 	})
+			 	}
 
-			 		if(finished == 0){
-			 			completionTracker.html("You haven't finished any chapter from this section")
-			 		} else if(finished == total){
-			 			completionTracker.html("You have completed this section")
-			 		} else if(finished == 1){
-			 			completionTracker.html("You completed " + finished + " chapter from this section. That puts you at " +calculatePercentage.toFixed(0)+ "% completion.")
-			 		} else{
-			 			completionTracker.html("You completed " + finished + " chapters from this section. That puts you at " +calculatePercentage.toFixed(0)+ "% completion.")
-			 		}
-			 	})
+			 	calculateCompletion();
 
 				$(".card").click(function(){
 					var $this = $(this)
@@ -143,6 +159,7 @@ $(document).ready(function() {
 						}
 					});
 				})
+
 				$("#lesson").on("click" , "#complete-lesson", function(){
 					var $this = $(this)
 					var lessonPage = $this.parent().parent().attr("data-lesson").replace("-lesson" , "")
@@ -159,7 +176,18 @@ $(document).ready(function() {
 							$(this).removeClass("reading")
 						}
 					});
+					calculateCompletion()
 				});
+
+				// $("#lesson").on("click" , ".side-menu span a" , function(event){
+				// 	var test = $(this).attr("href").replace("#" , "");
+				// 	var target = $('.lesson-content h1[id="' +test+ '"]')
+
+				// 	event.peventDefault()
+				// 	$("#lesson").animate({
+				// 		scrollTop: target.offset().top
+				// 	}, 1000)
+				// });
 
 				$("#lesson").on("click" , "#back", function(){
 					$("#lesson").css("transform" , "translateX(100vw)")

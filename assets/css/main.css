@@ -230,6 +230,12 @@ input::placeholder {
   letter-spacing: -0.025em;
   color: rgba(0, 70, 135, 0.8);
   margin-bottom: 25px;
+  transition: 200ms;
+  opacity: 0;
+}
+.drawer .cards-wrapper .completion-tracker.visible {
+  transition-delay: 100ms;
+  opacity: 1;
 }
 
 html,
@@ -332,6 +338,9 @@ body,
 }
 #dashboard .greeting #user-name {
   text-transform: capitalize;
+}
+#dashboard .greeting #user-name::after {
+  content: "!";
 }
 
 #lesson {

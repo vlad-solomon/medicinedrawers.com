@@ -46,6 +46,12 @@
 			letter-spacing: -0.025em;
 			color: transparentize($blue, 0.2);
 			margin-bottom: 25px;
+			transition: 200ms;
+			opacity: 0;
+			&.visible{
+				transition-delay: 100ms;
+				opacity: 1;
+			}
 		}
 	}
 }
