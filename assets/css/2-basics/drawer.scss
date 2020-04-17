@@ -39,5 +39,13 @@
 		max-height: 0;
 		overflow: hidden;
 		transition: 200ms;
+		.completion-tracker{
+			width: 100%;
+			font-family: Montserrat Regular;
+			font-size: 1.875rem;
+			letter-spacing: -0.025em;
+			color: transparentize($blue, 0.2);
+			margin-bottom: 25px;
+		}
 	}
 }

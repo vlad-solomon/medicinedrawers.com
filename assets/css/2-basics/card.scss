@@ -20,6 +20,9 @@
 	&.visible{
 		transition: all 200ms, opacity 200ms linear 100ms;
 		opacity: 1;
+		&.read{
+			opacity: 0.4;
+		}
 	}
 	&.reading::before,
 	&.read::before{
@@ -35,10 +38,6 @@
 		border-radius: 2px;
 		transition: 200ms;
 		font-size: 0.8rem;
-	}
-	&.read{
-		// opacity: 0.4;
-		// transition-delay: 1s;
 	}
 	&.read::before{
 		content: 'read';

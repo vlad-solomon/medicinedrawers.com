@@ -54,6 +54,7 @@ $(document).ready(function() {
 	}
 
 	function loadDashboard(){
+
 		if(localStorage.getItem("userName")){
 			$("#dashboard").load("./assets/html/includes/dashboard.html" , function(){
 				$("#user-name").append(localStorage.getItem("userName"))
@@ -90,12 +91,40 @@ $(document).ready(function() {
 						$(this).removeClass("reading");
 					}
 
-			     });
+			    });
+
+			 	// console.log($(".reading").length)
+			 	// console.log($(".read").length)
+
+			 	$(".drawer").each(function(){
+			 		var finished = $(this).children(".cards-wrapper").children(".read").length
+			 		var total = $(this).children(".cards-wrapper").children(".card").length
+			 		var completionTracker = $(this).children(".cards-wrapper").children(".completion-tracker")
+			 		console.log("this chapter has this many cards:" +total)
+			 		console.log("you read this many cards:" + finished)
+
+			 		var calculatePercentage = (100 * finished) / total
+
+			 		if(finished == 0){
+			 			completionTracker.html("You haven't finished any chapter from this section")
+			 		} else if(finished == total){
+			 			completionTracker.html("You have completed this section")
+			 		} else if(finished == 1){
+			 			completionTracker.html("You completed " + finished + " chapter from this section. That puts you at " +calculatePercentage.toFixed(0)+ "% completion.")
+			 		} else{
+			 			completionTracker.html("You completed " + finished + " chapters from this section. That puts you at " +calculatePercentage.toFixed(0)+ "% completion.")
+			 		}
+			 	})
 
 				$(".card").click(function(){
 					var $this = $(this)
 
 					$this.addClass("reading")
+					$("#dashboard").css({
+						"transform" : "translateX(-100vw)",
+						"transition" : "1s",
+						"pointer-events" : "none"
+					})
 
 					if(!readingCards.includes($(this).data("lesson"))){
 						readingCards+=(readingCards.length>0?',':'')+$(this).data("lesson");
@@ -106,7 +135,7 @@ $(document).ready(function() {
 					lessonContainer = lessonCard + ".html";
 
 					$("#lesson").load(lessonContainer , function(){
-						$("#lesson").css("transform" , "translateY(0)");
+						$("#lesson").css("transform" , "none");
 						var cardSelector = $(this).children(".container").attr("data-lesson").replace("-lesson" , "")
 						if($('.card[data-lesson="pages/' +cardSelector+ '"]').hasClass("read")){
 							$("#lesson #complete-lesson").text("You've read this chapter")
@@ -133,10 +162,12 @@ $(document).ready(function() {
 				});
 
 				$("#lesson").on("click" , "#back", function(){
-					$("#lesson").css("transform" , "translateY(-100%)")
+					$("#lesson").css("transform" , "translateX(100vw)")
+					$("#dashboard").css("transform" , "none")
 					setTimeout(function(){
 						$("#lesson").children().remove();
-					}, 200)
+						$("#dashboard").css("pointer-events" , "auto")
+					}, 1000)
 				});
 			});
 		}
