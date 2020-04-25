@@ -213,7 +213,7 @@ input::placeholder {
   opacity: 1;
 }
 .drawer .drawer-title::selection {
-  background-color: none;
+  background-color: none !important;
 }
 .drawer .cards-wrapper {
   display: grid;
@@ -353,7 +353,6 @@ body,
 #tutorial {
   align-items: flex-end;
   transform: translate(100vw);
-  transition: 1s;
   opacity: 0;
 }
 @media (max-width: 1200px) {
@@ -439,7 +438,6 @@ body,
   max-width: 100%;
   height: 100%;
   transform: translateX(100vw);
-  transition: 1s;
   overflow: auto;
   display: block;
 }

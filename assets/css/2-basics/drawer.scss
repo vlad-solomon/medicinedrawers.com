@@ -29,7 +29,7 @@
 			opacity: 1;
 		}
 		&::selection{
-			background-color: none;
+			background-color: none !important;
 		}
 	}
 	.cards-wrapper{

@@ -23,7 +23,8 @@ $(document).ready(function() {
 				})
 				$("#tutorial").css({
 					"transform" : "none",
-					"opacity" : "1"
+					"opacity" : "1",
+					"transition" : "1s"
 				})
 
 				var userName = $("input").val().trim();
@@ -34,7 +35,7 @@ $(document).ready(function() {
 				$("#close-tutorial").click(function(){
 					$("#tutorial").css({
 						"transform" : "translateX(-100vw)",
-						"opacity" : "0"
+						"opacity" : "0",
 					})
 					$("#dashboard").css({
 						"transform" : "none",
@@ -151,7 +152,10 @@ $(document).ready(function() {
 					lessonContainer = lessonCard + ".html";
 
 					$("#lesson").load(lessonContainer , function(){
-						$("#lesson").css("transform" , "none");
+						$("#lesson").css({
+							"transform" : "none",
+							"transition" : "1s"
+						});
 						var cardSelector = $(this).children(".container").attr("data-lesson").replace("-lesson" , "")
 						if($('.card[data-lesson="pages/' +cardSelector+ '"]').hasClass("read")){
 							$("#lesson #complete-lesson").text("You've read this chapter")
@@ -190,7 +194,9 @@ $(document).ready(function() {
 				// });
 
 				$("#lesson").on("click" , "#back", function(){
-					$("#lesson").css("transform" , "translateX(100vw)")
+					$("#lesson").css({
+						"transform" : "translateX(100vw)",
+					})
 					$("#dashboard").css("transform" , "none")
 					setTimeout(function(){
 						$("#lesson").children().remove();
