@@ -3,6 +3,11 @@
 	transform: translate(100vw);
 	transition: 1s;
 	opacity: 0;
+
+	@media (max-width: 1200px){
+		display: block;
+	}
+
 	#tutorial-content{
 		h1{
 			font-size: 3rem;
@@ -18,11 +23,35 @@
 			width: 880px;
 			margin-bottom: 28px;
 		}
+		
+		@media (max-width: 1200px){
+			h1{
+				font-size: 2.5rem;
+				width: 100%;
+				text-align: center;
+				margin-top: 50px;
+			}
+			p{
+				width: 100%;
+				font-size: 1rem;
+				text-align: justify;
+			}
+			.button{
+				margin: 100px 0 50px 0;
+				width: 100%;
+			}
+		}
+
 	}
 	#tutorial-image{
 		position: absolute;
 		height: 100%;
 		left: -100px;
 		bottom: 0;
+
+		@media (max-width: 1200px){
+			display: none;
+		}
+
 	}
 }

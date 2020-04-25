@@ -33,9 +33,9 @@
 		}
 	}
 	.cards-wrapper{
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
+		display: grid;
+		gap: 15px;
+		grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
 		max-height: 0;
 		overflow: hidden;
 		transition: 200ms;
@@ -45,9 +45,9 @@
 			font-size: 1.875rem;
 			letter-spacing: -0.025em;
 			color: transparentize($blue, 0.2);
-			margin-bottom: 25px;
 			transition: 200ms;
 			opacity: 0;
+			grid-column: 1/-1;
 			&.visible{
 				transition-delay: 100ms;
 				opacity: 1;

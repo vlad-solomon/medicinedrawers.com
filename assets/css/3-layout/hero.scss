@@ -4,24 +4,73 @@
 		width: 705px;
 		line-height: 130%;
 		letter-spacing: -0.025em;
+
+		@media (max-width: 800px){
+			font-size: 3rem;
+		}
+		@media (max-width: 615px){
+			font-size: 2.3rem;
+		}
+
 	}
 	p{
 		line-height: 185%;
 		letter-spacing: -0.025em;
 		width: 585px;
 		margin: 85px 0;
+
+		@media (max-width: 615px){
+			font-size: 1rem;
+		}
+
 	}
+
+	@media (max-width: 1200px){
+		align-items: center;
+		h1{
+			width: 100%;
+			text-align: center;
+		}
+		p{
+			width: 100%;
+			text-align: center;
+		}
+		.input-wrapper{
+			display: block !important;
+			width: 50%;
+			input{
+				width: 100%;
+				margin-bottom: 20px;
+				text-align: center;
+			}
+			.button{
+				margin: 0 auto;
+			}
+		}
+	}
+
 	.input-wrapper{
 		display: flex;
 		input{
 			margin-right: 15px;
 		}
+
+		@media (max-width: 800px){
+			width: 100%;
+		}
+
 	}
 	#hero-image{
 		position: absolute;
 		z-index: -1;
 		right: -215px;
 		bottom: 0;
-		height: 100%;
+
+		@media (max-width: 1300px){
+			right: -250px;
+		}
+		@media(max-width: 1200px){
+			display: none;
+		}
 	}
 }

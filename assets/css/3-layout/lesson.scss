@@ -33,7 +33,7 @@
 				width: 100%;
 				padding: 15px;
 				margin-bottom: 15px;
-				span{
+				a{
 					font-family: Timepos Text Regular;
 					font-weight: 600;
 					font-size: 1.25rem;
@@ -42,12 +42,12 @@
 					letter-spacing: 0.02em;
 					display: block;
 					margin-bottom: 25px;
-					&:last-of-type{
-						margin: 0;
-					}
+					text-decoration: none;
 					&:hover{
 						text-decoration: underline;
-						cursor: pointer;
+					}
+					&:last-of-type{
+						margin: 0;
 					}
 					&.nested{
 						margin-left: 25px 

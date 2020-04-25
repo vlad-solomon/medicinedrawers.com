@@ -1,14 +1,12 @@
 .card{
 	position: relative;
 	height: 255px;
-	width: 345px;
 	background-color: #fff;
 	color: $blue;
 	border: 1px solid $blue;
 	border-radius: 2px;
 	box-sizing: border-box;
 	box-shadow: 0 5px 5px rgba($blue , 0.05);
-	margin-bottom: 15px;
 	transition: all 200ms, opacity 200ms linear 0s;
 	cursor: pointer;
 	opacity: 0;
@@ -65,5 +63,7 @@
 		font-family: Tiempos Text Regular;
 		font-size: 1.875rem;
 		font-style: italic;
+		box-sizing: border-box;
+		padding-right: 20px;
 	}
 }

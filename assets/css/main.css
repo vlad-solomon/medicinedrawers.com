@@ -115,14 +115,12 @@ input::placeholder {
 .card {
   position: relative;
   height: 255px;
-  width: 345px;
   background-color: #fff;
   color: #004687;
   border: 1px solid #004687;
   border-radius: 2px;
   box-sizing: border-box;
   box-shadow: 0 5px 5px rgba(0, 70, 135, 0.05);
-  margin-bottom: 15px;
   transition: all 200ms, opacity 200ms linear 0s;
   cursor: pointer;
   opacity: 0;
@@ -178,6 +176,8 @@ input::placeholder {
   font-family: Tiempos Text Regular;
   font-size: 1.875rem;
   font-style: italic;
+  box-sizing: border-box;
+  padding-right: 20px;
 }
 
 .drawer {
@@ -216,9 +216,9 @@ input::placeholder {
   background-color: none;
 }
 .drawer .cards-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
   max-height: 0;
   overflow: hidden;
   transition: 200ms;
@@ -229,9 +229,9 @@ input::placeholder {
   font-size: 1.875rem;
   letter-spacing: -0.025em;
   color: rgba(0, 70, 135, 0.8);
-  margin-bottom: 25px;
   transition: 200ms;
   opacity: 0;
+  grid-column: 1/-1;
 }
 .drawer .cards-wrapper .completion-tracker.visible {
   transition-delay: 100ms;
@@ -260,6 +260,13 @@ body,
   max-width: 1425px;
   margin: 0 auto;
 }
+@media (max-width: 1500px) {
+  .container {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 50px;
+  }
+}
 
 #hero {
   transition: 1s;
@@ -269,11 +276,51 @@ body,
   line-height: 130%;
   letter-spacing: -0.025em;
 }
+@media (max-width: 800px) {
+  #hero h1 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 615px) {
+  #hero h1 {
+    font-size: 2.3rem;
+  }
+}
 #hero p {
   line-height: 185%;
   letter-spacing: -0.025em;
   width: 585px;
   margin: 85px 0;
+}
+@media (max-width: 615px) {
+  #hero p {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 1200px) {
+  #hero {
+    align-items: center;
+  }
+  #hero h1 {
+    width: 100%;
+    text-align: center;
+  }
+  #hero p {
+    width: 100%;
+    text-align: center;
+  }
+  #hero .input-wrapper {
+    display: block !important;
+    width: 50%;
+  }
+  #hero .input-wrapper input {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  #hero .input-wrapper .button {
+    margin: 0 auto;
+  }
 }
 #hero .input-wrapper {
   display: flex;
@@ -281,12 +328,26 @@ body,
 #hero .input-wrapper input {
   margin-right: 15px;
 }
+@media (max-width: 800px) {
+  #hero .input-wrapper {
+    width: 100%;
+  }
+}
 #hero #hero-image {
   position: absolute;
   z-index: -1;
   right: -215px;
   bottom: 0;
-  height: 100%;
+}
+@media (max-width: 1300px) {
+  #hero #hero-image {
+    right: -250px;
+  }
+}
+@media (max-width: 1200px) {
+  #hero #hero-image {
+    display: none;
+  }
 }
 
 #tutorial {
@@ -294,6 +355,11 @@ body,
   transform: translate(100vw);
   transition: 1s;
   opacity: 0;
+}
+@media (max-width: 1200px) {
+  #tutorial {
+    display: block;
+  }
 }
 #tutorial #tutorial-content h1 {
   font-size: 3rem;
@@ -309,11 +375,33 @@ body,
   width: 880px;
   margin-bottom: 28px;
 }
+@media (max-width: 1200px) {
+  #tutorial #tutorial-content h1 {
+    font-size: 2.5rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+  }
+  #tutorial #tutorial-content p {
+    width: 100%;
+    font-size: 1rem;
+    text-align: justify;
+  }
+  #tutorial #tutorial-content .button {
+    margin: 100px 0 50px 0;
+    width: 100%;
+  }
+}
 #tutorial #tutorial-image {
   position: absolute;
   height: 100%;
   left: -100px;
   bottom: 0;
+}
+@media (max-width: 1200px) {
+  #tutorial #tutorial-image {
+    display: none;
+  }
 }
 
 #dashboard {
@@ -367,7 +455,6 @@ body,
   width: 240px;
   margin-top: 165px;
   order: 1;
-  position: -webkit-sticky;
   position: sticky;
   top: 50px;
 }
@@ -380,7 +467,7 @@ body,
   padding: 15px;
   margin-bottom: 15px;
 }
-#lesson .container .side-menu .quick-chapters span {
+#lesson .container .side-menu .quick-chapters a {
   font-family: Timepos Text Regular;
   font-weight: 600;
   font-size: 1.25rem;
@@ -389,15 +476,15 @@ body,
   letter-spacing: 0.02em;
   display: block;
   margin-bottom: 25px;
+  text-decoration: none;
 }
-#lesson .container .side-menu .quick-chapters span:last-of-type {
+#lesson .container .side-menu .quick-chapters a:hover {
+  text-decoration: underline;
+}
+#lesson .container .side-menu .quick-chapters a:last-of-type {
   margin: 0;
 }
-#lesson .container .side-menu .quick-chapters span:hover {
-  text-decoration: underline;
-  cursor: pointer;
-}
-#lesson .container .side-menu .quick-chapters span.nested {
+#lesson .container .side-menu .quick-chapters a.nested {
   margin-left: 25px;
 }
 #lesson .container .side-menu .button {

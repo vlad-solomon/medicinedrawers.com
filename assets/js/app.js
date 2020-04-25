@@ -4,7 +4,7 @@ $(document).ready(function() {
 		$("#tutorial").load("./assets/html/includes/tutorial.html")
 		$("#hero").load("./assets/html/includes/hero.html" , function(){
 			$("input").keyup(function(){
-				if($("input").val().length >= 3){
+				if($("input").val().trim().length >= 3){
 					$("#sign-in").css({
 						"opacity" : "1",
 						"pointer-events" : "auto"
@@ -27,7 +27,7 @@ $(document).ready(function() {
 				})
 
 				var userName = $("input").val().trim();
-				$("#user-name").append(userName);
+				$("#user-name").text(userName);
 				$(this).css("pointer-events" , "none")
 				localStorage.setItem("userName", userName);
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
 		if(localStorage.getItem("userName")){
 			$("#dashboard").load("./assets/html/includes/dashboard.html" , function(){
 
-				$("#user-name").append(localStorage.getItem("userName"))
+				$("#user-name").text(localStorage.getItem("userName"))
 
 				
 				var time = new Date();
@@ -123,9 +123,9 @@ $(document).ready(function() {
 				 		} else if(countRead == countTotal){
 				 			completionTracker.html("You have completed this section")
 				 		} else if(countRead == 1){
-				 			completionTracker.html("You completed " + countRead + " chapter from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapter from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
 				 		} else{
-				 			completionTracker.html("You completed " + countRead + " chapters from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapters from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
 				 		}
 				 	})
 			 	}

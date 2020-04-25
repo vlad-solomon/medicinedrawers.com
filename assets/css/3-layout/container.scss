@@ -9,4 +9,10 @@
 	max-width: 1425px;
 	// border: 1px solid grey;
 	margin: 0 auto;
+
+	@media(max-width: 1500px){
+		max-width: 100%;
+		box-sizing: border-box;
+		padding: 0 50px;
+	}
 }
