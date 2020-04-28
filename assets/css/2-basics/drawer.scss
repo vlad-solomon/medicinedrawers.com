@@ -1,5 +1,8 @@
 .drawer{
 	margin-bottom: 30px;
+	@media (max-width: 500px){
+		margin-bottom: 15px;
+	}
 	.drawer-title{
 		display: inline-block;
 		margin-bottom: 15px;
@@ -10,6 +13,15 @@
 		opacity: 0.8;
 		cursor: pointer;
 		transition: 200ms;
+		@media (max-width: 500px){
+			font-size: 1.5rem;
+			margin-bottom: 8px;
+			img{
+				top: -2px !important;
+				height: 10px;
+				margin-left: 6px !important;
+			}
+		}
 		&.active{
 			opacity: 1;
 		}
@@ -35,10 +47,20 @@
 	.cards-wrapper{
 		display: grid;
 		gap: 15px;
-		grid-template-columns: repeat(auto-fit, minmax(345px, 1fr));
+		grid-template-columns: repeat(4, 1fr);
 		max-height: 0;
 		overflow: hidden;
 		transition: 200ms;
+
+		@media (max-width: 1300px){
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@media (max-width: 800px){
+			grid-template-columns: repeat(2, 1fr)
+		}
+		@media (max-width: 500px){
+			gap: 10px;
+		}
 		.completion-tracker{
 			width: 100%;
 			font-family: Montserrat Regular;
@@ -51,6 +73,11 @@
 			&.visible{
 				transition-delay: 100ms;
 				opacity: 1;
+			}
+			@media (max-width: 500px){
+				font-size: 0.75rem;
+				line-height: 160%;
+				letter-spacing: -0.045em;
 			}
 		}
 	}

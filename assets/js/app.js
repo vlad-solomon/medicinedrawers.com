@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+
+	var docWidth = document.documentElement.offsetWidth;
+
+	[].forEach.call(
+	  document.querySelectorAll('*'),
+	  function(el) {
+	    if (el.offsetWidth > docWidth) {
+	      console.log(el);
+	    }
+	  }
+	);
+
 	if(!localStorage.getItem("userName")){
 		$("#tutorial").load("./assets/html/includes/tutorial.html")
 		$("#hero").load("./assets/html/includes/hero.html" , function(){
@@ -26,7 +38,9 @@ $(document).ready(function() {
 					"opacity" : "1",
 					"transition" : "1s"
 				})
-
+				setTimeout(function(){
+					$("#tutorial").css("position" , "absolute")
+				}, 1100)
 				var userName = $("input").val().trim();
 				$("#user-name").text(userName);
 				$(this).css("pointer-events" , "none")
@@ -41,6 +55,9 @@ $(document).ready(function() {
 						"transform" : "none",
 						"opacity" : "1"
 					})
+					setTimeout(function(){
+						$("#dashboard").css("position" , "absolute")
+					}, 1100)
 					loadDashboard();
 				})
 			});
@@ -50,7 +67,8 @@ $(document).ready(function() {
 		$("#dashboard").css({
 			"transform" : "none",
 			"opacity" : "1",
-			"transition" : "none"
+			"transition" : "none",
+			"position" : "absolute"
 		})
 	}
 
@@ -61,7 +79,6 @@ $(document).ready(function() {
 
 				$("#user-name").text(localStorage.getItem("userName"))
 
-				
 				var time = new Date();
 				var hour = time.getHours();
 
@@ -124,9 +141,9 @@ $(document).ready(function() {
 				 		} else if(countRead == countTotal){
 				 			completionTracker.html("You have completed this section")
 				 		} else if(countRead == 1){
-				 			completionTracker.html("You've completed " + countRead + " chapter from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapter from this section.<br> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
 				 		} else{
-				 			completionTracker.html("You've completed " + countRead + " chapters from this section. That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapters from this section.<br> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
 				 		}
 				 	})
 			 	}
@@ -158,19 +175,26 @@ $(document).ready(function() {
 						});
 						var cardSelector = $(this).children(".container").attr("data-lesson").replace("-lesson" , "")
 						if($('.card[data-lesson="pages/' +cardSelector+ '"]').hasClass("read")){
-							$("#lesson #complete-lesson").text("You've read this chapter")
-							$("#lesson #complete-lesson").addClass("pressed")
+							$("#lesson .side-menu .modal-button").remove();
+							$("#lesson .nav .modal-button").css("pointer-events" , "none").attr("src" , "./assets/img/completed.svg")
 						}
+						$("html").css("overflow" , "hidden")
 					});
 				})
 
 				$("#lesson").on("click" , "#complete-lesson", function(){
 					var $this = $(this)
-					var lessonPage = $this.parent().parent().attr("data-lesson").replace("-lesson" , "")
+					var lessonPage = $this.parent().parent().parent().attr("data-lesson").replace("-lesson" , "")
 					var cardSelector = $('.card[data-lesson="pages/' +lessonPage+ '"]')
-					cardSelector.addClass("read")
-					$this.addClass("pressed")
-					$this.text("You've read this chapter")
+					cardSelector.addClass("read");
+
+					var modalButton = $this.parent().parent().siblings(".side-menu").children(".button");
+
+					var completeButton = $this.parent().parent().siblings(".nav").children(".modal-button")
+
+					modalButton.remove();
+					completeButton.css("pointer-events" , "none").attr("src" , "./assets/img/completed.svg")
+
 					if(!readCards.includes(lessonPage)){
 						readCards+=(readCards.length>0?',':'') + "pages/" + lessonPage;
 						localStorage.setItem("readCards" , readCards)
@@ -180,6 +204,7 @@ $(document).ready(function() {
 							$(this).removeClass("reading")
 						}
 					});
+					closeModal();
 					calculateCompletion()
 				});
 
@@ -199,10 +224,111 @@ $(document).ready(function() {
 					})
 					$("#dashboard").css("transform" , "none")
 					setTimeout(function(){
+						$("html").removeAttr("style")
 						$("#lesson").children().remove();
 						$("#dashboard").css("pointer-events" , "auto")
 					}, 1000)
 				});
+
+				$("#lesson").on("click" , "#chapters-button" , function(){
+					$("#lesson").css("overflow-y" , "hidden")
+					$(".nav").css({
+						"transition" : "400ms",
+						"transform" : "translateY(100%)",
+					});
+					$(".side-menu").css("z-index" , "1")
+					setTimeout(function(){
+						$(".side-menu").css({
+							"opacity" : "1",
+							"transition" : "400ms",
+							"pointer-events" : "auto"
+						})
+					}, 400)
+				});
+
+				$("#lesson").on("click" , "#close-chapters" , function(){
+					closeChapters();
+				})
+
+				$("#lesson").on("click" , "a" , function(){
+					if($(window).width() <= 1150){
+						closeChapters()
+					}
+				});
+
+				$(window).resize(function(){
+					if($(window).width() >= 1150){
+						$(".side-menu").removeAttr("style")
+						$(".nav").removeAttr("style")
+						$("#lesson").css("overflow-y" , "auto")
+					}
+				})
+					
+				function closeChapters(){
+					$(".side-menu").css({
+						"opacity" : "0",
+						"pointer-events" : "none"
+					})
+					setTimeout(function(){
+						$(".side-menu").css({
+							"transition" : "none",
+							"z-index" : "-1",
+						})
+						$(".nav").css({
+							"transform" : "none"
+						})
+						$("#lesson").css("overflow-y" , "auto")
+					}, 400)
+				}
+
+				$("#lesson").on("click" , ".modal-button" , function(){
+					let modalContent = [
+						"<span>Do you want to mark this lesson as read?</span>",
+						"<div class='button' id='complete-lesson'>Yes, I've completed this lesson</div>",
+						"<div class='button' id='close-modal'>No, I want to continue reading</div>",
+					]
+					let modal = "<div class='modal'>" + modalContent.join("") + "</div>"
+					let modalOverlay = "<div class='modal-overlay'>" + modal + "</div>"
+
+					$("#lesson").children(".container").append(modalOverlay)
+
+					setTimeout(function(){
+						$(".modal-overlay").css("opacity" , "1");
+						$(".modal").css({
+							"opacity" : "1",
+							"transform" : "none"
+						})
+					})
+
+					$("#lesson").css("overflow-y" , "hidden")
+					$(".nav").css({
+						"transition" : "400ms",
+						"transform" : "translateY(100%)",
+						"pointer-events" : "none"
+					});
+
+					if($(window).width() >= 1150){
+						$(".nav").css("transform" , "none")
+					}
+
+				});
+
+				$("#lesson").on("click" , "#close-modal" , function(){
+					closeModal();
+				});
+
+				function closeModal(){
+					$(".modal-overlay").css("opacity" , "0")
+					setTimeout(function(){
+						$(".modal-overlay").remove();
+					}, 400)
+					$("#lesson").css("overflow-y" , "auto")
+					$(".nav").css({
+						"transform" : "none",
+						"pointer-events" : "auto"
+					})					
+				}
+
 			});
 		}
 	}

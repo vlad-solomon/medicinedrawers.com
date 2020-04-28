@@ -4,14 +4,6 @@
 		width: 705px;
 		line-height: 130%;
 		letter-spacing: -0.025em;
-
-		@media (max-width: 800px){
-			font-size: 3rem;
-		}
-		@media (max-width: 615px){
-			font-size: 2.3rem;
-		}
-
 	}
 	p{
 		line-height: 185%;
@@ -70,7 +62,52 @@
 			right: -250px;
 		}
 		@media(max-width: 1200px){
-			display: none;
+			position: static;
+			display: block;
+			height: 378px;
+		}
+	}
+}
+
+// C H A N G E L A T E R
+
+@media (max-width: 1200px){
+	#hero{
+		height: auto;
+		padding: 40px 0;
+		h1{
+			padding: 0 25px;
+			text-align: left;
+			font-size: 1.75rem;
+			line-height: 130%;
+			box-sizing: border-box;
+		}
+		img{
+			margin: 0 auto;
+		}
+		p{
+			position: relative;
+			box-sizing: border-box;
+			margin: 0 0 35px 0;
+			padding: 35px 25px 0 25px;
+			text-align: left;
+			border-radius: 10px;
+			font-size: 0.875rem;
+			line-height: 165%;
+			letter-spacing: -0.045em;
+			box-shadow: 0px -25px 20px rgba(0, 70, 135, 0.05);
+			span{
+				display: block;
+				margin-top: 10px;
+			}
+		}
+		.input-wrapper{
+			box-sizing: border-box;
+			padding: 0 25px;
+			.button{
+				margin: 0;
+				width: 100%;
+			}
 		}
 	}
 }
