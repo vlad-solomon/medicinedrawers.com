@@ -35,5 +35,9 @@ input{
 		opacity: 0;
 		pointer-events: none;
 		transition: 200ms;
+		@media (max-width: 1400px){
+			margin-top: 10px;
+			width: 100%;
+		}
 	}
 }

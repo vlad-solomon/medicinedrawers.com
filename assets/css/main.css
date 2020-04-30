@@ -111,6 +111,12 @@ input::placeholder {
   pointer-events: none;
   transition: 200ms;
 }
+@media (max-width: 1400px) {
+  .button#sign-in {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
 
 .card {
   position: relative;
@@ -390,6 +396,48 @@ input::placeholder {
   }
 }
 
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #004687;
+  color: white;
+  transition: 400ms;
+  opacity: 0;
+  z-index: 2;
+}
+.loading-screen img {
+  height: 100px;
+  animation: pulse 2s ease-in-out infinite;
+}
+.loading-screen:before {
+  content: "Beta v0.9 - April 2020";
+  position: absolute;
+  display: block;
+  bottom: 25px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: Tiempos Text Regular;
+  font-size: 1rem;
+  opacity: 0.2;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
 html,
 body {
   position: relative;
@@ -405,37 +453,63 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  flex-direction: column;
-  justify-content: center;
   height: 100%;
   max-width: 1425px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 @media (max-width: 1600px) {
   .container {
-    max-width: 1200px;
-  }
-}
-@media (max-width: 1300px) {
-  .container {
-    max-width: 1000px;
+    max-width: 100%;
+    padding: 0 50px;
   }
 }
 @media (max-width: 1150px) {
   .container {
     max-width: 100%;
-    box-sizing: border-box;
     padding: 0 20px;
   }
 }
 
 #hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   transition: 1s;
+}
+@media (max-width: 1024px) {
+  #hero {
+    display: block;
+  }
 }
 #hero h1 {
   width: 705px;
   line-height: 130%;
   letter-spacing: -0.025em;
+}
+@media (max-width: 1600px) {
+  #hero h1 {
+    font-size: 3.5rem;
+  }
+}
+@media (max-width: 1400px) {
+  #hero h1 {
+    font-size: 2.5rem;
+    width: 445px;
+  }
+}
+@media (max-width: 1024px) {
+  #hero h1 {
+    font-size: 2rem;
+    width: 600px;
+  }
+}
+@media (max-width: 700px) {
+  #hero h1 {
+    width: 100%;
+    font-size: 1.75rem;
+  }
 }
 #hero p {
   line-height: 185%;
@@ -443,34 +517,57 @@ body {
   width: 585px;
   margin: 85px 0;
 }
-@media (max-width: 615px) {
+@media (max-width: 1600px) {
   #hero p {
     font-size: 1rem;
+    width: 500px;
   }
 }
-@media (max-width: 1200px) {
-  #hero {
-    align-items: center;
-  }
-  #hero h1 {
-    width: 100%;
-    text-align: center;
-  }
+@media (max-width: 1400px) {
   #hero p {
-    width: 100%;
-    text-align: center;
+    font-size: 0.9rem;
+    width: 445px;
+    margin: 55px 0;
   }
+}
+@media (max-width: 1024px) {
+  #hero p {
+    font-size: 1.2rem;
+    width: 100%;
+    line-height: 180%;
+  }
+}
+@media (max-width: 700px) {
+  #hero p {
+    line-height: 165%;
+    font-size: 0.875rem;
+  }
+}
+@media (max-width: 1024px) {
   #hero .input-wrapper {
     display: block !important;
-    width: 50%;
+    width: 100% !important;
   }
   #hero .input-wrapper input {
     width: 100%;
+    height: 70px;
     margin-bottom: 20px;
     text-align: center;
+    font-size: 1.4rem;
   }
   #hero .input-wrapper .button {
     margin: 0 auto;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 700px) {
+  #hero .input-wrapper input {
+    height: 48px;
+    font-size: 0.9rem;
+  }
+  #hero .input-wrapper .button {
+    height: 48px;
   }
 }
 #hero .input-wrapper {
@@ -479,31 +576,67 @@ body {
 #hero .input-wrapper input {
   margin-right: 15px;
 }
+@media (max-width: 1400px) {
+  #hero .input-wrapper {
+    display: block;
+    width: 400px;
+  }
+  #hero .input-wrapper input {
+    margin-right: 0;
+    width: 100%;
+  }
+}
 @media (max-width: 800px) {
   #hero .input-wrapper {
     width: 100%;
   }
 }
-#hero #hero-image {
+#hero img {
   position: absolute;
   z-index: -1;
   right: -215px;
   bottom: 0;
+  height: 100%;
+  max-width: 1080px;
+  object-fit: contain;
+  object-position: bottom;
 }
-@media (max-width: 1300px) {
+@media (max-width: 1600px) {
   #hero #hero-image {
-    right: -250px;
+    left: calc(50% - 60px);
   }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
+  #hero #hero-image {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
   #hero #hero-image {
     position: static;
     display: block;
-    height: 378px;
+    height: auto;
+    width: 95%;
+    max-width: 700px;
+    min-width: 350px;
+  }
+}
+#hero #hero-alternative {
+  display: none;
+}
+@media (max-width: 1100px) {
+  #hero #hero-alternative {
+    display: block;
+    right: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  #hero #hero-alternative {
+    display: none;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   #hero {
     height: auto;
     padding: 40px 0;
@@ -511,8 +644,6 @@ body {
   #hero h1 {
     padding: 0 25px;
     text-align: left;
-    font-size: 1.75rem;
-    line-height: 130%;
     box-sizing: border-box;
   }
   #hero img {
@@ -525,8 +656,6 @@ body {
     padding: 35px 25px 0 25px;
     text-align: left;
     border-radius: 10px;
-    font-size: 0.875rem;
-    line-height: 165%;
     letter-spacing: -0.045em;
     box-shadow: 0px -25px 20px rgba(0, 70, 135, 0.05);
   }
@@ -544,16 +673,24 @@ body {
   }
 }
 #tutorial {
-  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   transform: translate(100vw);
   opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   #tutorial {
     display: block;
+  }
+}
+@media (max-width: 1400px) {
+  #tutorial #tutorial-content {
+    box-sizing: border-box;
+    padding-right: 30px;
   }
 }
 #tutorial #tutorial-content h1 {
@@ -563,31 +700,99 @@ body {
   line-height: 135%;
   margin-bottom: 55px;
 }
+@media (max-width: 1400px) {
+  #tutorial #tutorial-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 35px;
+  }
+}
+@media (max-width: 1300px) {
+  #tutorial #tutorial-content h1 {
+    font-size: 2rem;
+    width: 500px;
+  }
+}
+@media (max-width: 1024px) {
+  #tutorial #tutorial-content h1 {
+    box-sizing: border-box;
+    padding-right: 100px !important;
+  }
+}
+@media (max-width: 700px) {
+  #tutorial #tutorial-content h1 {
+    font-size: 1.8rem !important;
+    padding-right: 25px !important;
+  }
+}
 #tutorial #tutorial-content p {
   font-size: 1.5rem;
   line-height: 150%;
   letter-spacing: -0.025em;
-  width: 880px;
+  width: 820px;
   margin-bottom: 28px;
+}
+@media (max-width: 1400px) {
+  #tutorial #tutorial-content p {
+    font-size: 1.2rem;
+    width: 700px;
+  }
+}
+@media (max-width: 1300px) {
+  #tutorial #tutorial-content p {
+    width: 550px;
+  }
+}
+@media (max-width: 1100px) {
+  #tutorial #tutorial-content p {
+    width: 450px;
+  }
+}
+@media (max-width: 700px) {
+  #tutorial #tutorial-content p {
+    font-size: 0.875rem !important;
+    line-height: 165% !important;
+  }
 }
 #tutorial #tutorial-content #tutorial-image {
   position: absolute;
   height: 100%;
   left: -100px;
   bottom: 0;
+  max-width: 1080px;
+  object-fit: contain;
+  object-position: bottom;
+}
+@media (max-width: 1600px) {
+  #tutorial #tutorial-content #tutorial-image {
+    left: 50px;
+  }
+}
+@media (max-width: 1150px) {
+  #tutorial #tutorial-content #tutorial-image {
+    left: -120px;
+  }
+}
+@media (max-width: 700px) {
+  #tutorial #tutorial-content #tutorial-image {
+    height: 400px !important;
+  }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   #tutorial {
     padding: 40px 0;
     box-sizing: border-box;
     height: auto;
   }
+  #tutorial #tutorial-content {
+    padding: 0;
+  }
   #tutorial #tutorial-content h1 {
     box-sizing: border-box;
     padding: 0 25px;
     text-align: left;
-    font-size: 1.75rem;
+    font-size: 2rem;
+    width: 600px;
     line-height: 130%;
     margin: 0;
     width: auto;
@@ -595,13 +800,16 @@ body {
   #tutorial #tutorial-content #tutorial-image {
     display: block;
     position: static;
-    height: 378px;
+    height: auto;
+    width: 40%;
+    max-width: 700px;
+    min-width: 350px;
     margin: 0 auto;
   }
   #tutorial #tutorial-content p {
     position: relative;
-    font-size: 0.875rem;
-    line-height: 165%;
+    font-size: 1.2rem;
+    line-height: 180%;
     letter-spacing: -0.045em;
     box-sizing: border-box;
     padding: 0 25px;
@@ -629,6 +837,11 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+}
+@media (max-width: 1600px) {
+  #dashboard {
+    padding: 80px 100px;
+  }
 }
 @media (max-width: 1150px) {
   #dashboard {
@@ -693,8 +906,8 @@ body {
 #lesson .container .nav {
   position: absolute;
   z-index: 1;
-  top: 93px;
-  left: -50px;
+  top: 90px;
+  transform: translateX(-25px);
 }
 #lesson .container .nav img {
   cursor: pointer;
@@ -702,7 +915,7 @@ body {
   transition: 400ms transform;
 }
 #lesson .container .nav img:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 #lesson .container .nav img:not(:first-child) {
   display: none;
@@ -712,6 +925,7 @@ body {
     top: auto;
     bottom: 0;
     left: 0;
+    transform: translateX(0);
     position: fixed;
     height: 70px;
     width: 100%;
@@ -828,6 +1042,7 @@ body {
   position: relative;
   margin-top: 50px;
   margin-right: 50px;
+  margin-left: 25px;
   width: 1125px;
 }
 #lesson .container .lesson-content h1 {
@@ -855,15 +1070,11 @@ body {
     letter-spacing: normal;
   }
 }
-@media (max-width: 1600px) {
-  #lesson .container .lesson-content {
-    width: 950px;
-  }
-}
 @media (max-width: 1150px) {
   #lesson .container .lesson-content {
     margin-top: 0;
     margin-right: 0;
+    margin-left: 0;
     width: auto;
   }
 }

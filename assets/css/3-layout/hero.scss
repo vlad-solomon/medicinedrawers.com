@@ -1,42 +1,84 @@
 #hero{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
 	transition: 1s;
+	@media (max-width: 1024px){
+		display: block;
+	}
 	h1{
 		width: 705px;
 		line-height: 130%;
 		letter-spacing: -0.025em;
+		@media (max-width: 1600px){
+			font-size: 3.5rem;
+		}
+		@media (max-width: 1400px){
+			font-size: 2.5rem;
+			width: 445px;
+		}
+		@media (max-width: 1024px){
+			font-size: 2rem;
+			width: 600px;
+		}
+		@media (max-width: 700px){
+			width: 100%;
+			font-size: 1.75rem;
+		}
 	}
 	p{
 		line-height: 185%;
 		letter-spacing: -0.025em;
 		width: 585px;
 		margin: 85px 0;
-
-		@media (max-width: 615px){
+		@media (max-width: 1600px){
 			font-size: 1rem;
+			width: 500px;
 		}
-
+		@media (max-width: 1400px){
+			font-size: 0.9rem;
+			width: 445px;
+			margin: 55px 0;
+		}
+		@media (max-width: 1024px){
+			font-size: 1.2rem;
+			width: 100%;
+			line-height: 180%;
+		}
+		@media (max-width: 700px){
+			line-height: 165%;
+			font-size: 0.875rem;
+		}
 	}
 
-	@media (max-width: 1200px){
-		align-items: center;
-		h1{
-			width: 100%;
-			text-align: center;
-		}
-		p{
-			width: 100%;
-			text-align: center;
-		}
+	@media (max-width: 1024px){
 		.input-wrapper{
 			display: block !important;
-			width: 50%;
+			width: 100% !important;
 			input{
 				width: 100%;
+				height: 70px;
 				margin-bottom: 20px;
 				text-align: center;
+				font-size: 1.4rem;
 			}
 			.button{
 				margin: 0 auto;
+				height: 50px;
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	@media (max-width: 700px){
+		.input-wrapper{
+			input{
+				height: 48px;
+				font-size: 0.9rem;
+			}
+			.button{
+				height: 48px;
 			}
 		}
 	}
@@ -46,40 +88,64 @@
 		input{
 			margin-right: 15px;
 		}
-
+		@media (max-width: 1400px){
+			display: block;
+			width: 400px;
+			input{
+				margin-right: 0;
+				width: 100%;
+			}
+		}
 		@media (max-width: 800px){
 			width: 100%;
 		}
 
 	}
-	#hero-image{
+	img{
 		position: absolute;
 		z-index: -1;
 		right: -215px;
 		bottom: 0;
-
-		@media (max-width: 1300px){
-			right: -250px;
+		height: 100%;
+		max-width: 1080px;
+		object-fit: contain;
+		object-position: bottom;
+	}
+	#hero-image{
+		@media (max-width: 1600px){
+			left: calc(50% - 60px);
 		}
-		@media(max-width: 1200px){
+		@media(max-width: 1100px){
+			display: none;
+		}
+		@media(max-width: 1024px){
 			position: static;
 			display: block;
-			height: 378px;
+			height: auto;
+			width: 95%;
+			max-width: 700px;
+			min-width: 350px;
+		}
+	}
+	#hero-alternative{
+		display: none;
+		@media (max-width: 1100px){
+			display: block;
+			right: 25px;
+		}
+		@media (max-width: 1024px){
+			display: none;
 		}
 	}
 }
 
-// C H A N G E L A T E R
-
-@media (max-width: 1200px){
+@media (max-width: 1024px){
 	#hero{
 		height: auto;
 		padding: 40px 0;
 		h1{
 			padding: 0 25px;
 			text-align: left;
-			font-size: 1.75rem;
-			line-height: 130%;
 			box-sizing: border-box;
 		}
 		img{
@@ -92,8 +158,6 @@
 			padding: 35px 25px 0 25px;
 			text-align: left;
 			border-radius: 10px;
-			font-size: 0.875rem;
-			line-height: 165%;
 			letter-spacing: -0.045em;
 			box-shadow: 0px -25px 20px rgba(0, 70, 135, 0.05);
 			span{

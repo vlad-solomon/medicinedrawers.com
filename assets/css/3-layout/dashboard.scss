@@ -8,6 +8,9 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	@media (max-width: 1600px){
+		padding: 80px 100px;
+	}
 	@media (max-width: 1150px){
 		padding: 40px 25px 80px 25px;
 	}

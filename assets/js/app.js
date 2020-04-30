@@ -1,20 +1,39 @@
 $(document).ready(function() {
 
+	//TODO REMOVE HERO AND TUTORIAL AFTER DASHBOARD IS LOADED FOR THE FIRST TIME
 
-	var docWidth = document.documentElement.offsetWidth;
 
-	[].forEach.call(
-	  document.querySelectorAll('*'),
-	  function(el) {
-	    if (el.offsetWidth > docWidth) {
-	      console.log(el);
-	    }
-	  }
-	);
+	function initLoading(){
+		const loadingIcon = "<img src='./assets/img/loading-icon.svg'>"
+		const loadingScreen = "<div class='loading-screen'>" +loadingIcon+ "</div>"
+
+		$("body").append(loadingScreen)
+
+		setTimeout(function(){
+			$(".loading-screen").css("opacity" , "1")
+		})
+	}
+
+	initLoading();
+
+	function destroyLoading(){
+		setTimeout(function(){
+			$(".loading-screen").css({
+				"opacity" : "0",
+				"transform" : "scale(1.2)"
+			})
+		}, 400)
+		setTimeout(function(){
+			$(".loading-screen").remove();
+		}, 800)
+	}
 
 	if(!localStorage.getItem("userName")){
 		$("#tutorial").load("./assets/html/includes/tutorial.html")
 		$("#hero").load("./assets/html/includes/hero.html" , function(){
+
+			destroyLoading();
+
 			$("input").keyup(function(){
 				if($("input").val().trim().length >= 3){
 					$("#sign-in").css({
@@ -74,8 +93,12 @@ $(document).ready(function() {
 
 	function loadDashboard(){
 
+		initLoading();
+
 		if(localStorage.getItem("userName")){
 			$("#dashboard").load("./assets/html/includes/dashboard.html" , function(){
+
+				destroyLoading();
 
 				$("#user-name").text(localStorage.getItem("userName"))
 
@@ -141,9 +164,9 @@ $(document).ready(function() {
 				 		} else if(countRead == countTotal){
 				 			completionTracker.html("You have completed this section")
 				 		} else if(countRead == 1){
-				 			completionTracker.html("You've completed " + countRead + " chapter from this section.<br> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapter from this section.<span> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.</span>")
 				 		} else{
-				 			completionTracker.html("You've completed " + countRead + " chapters from this section.<br> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.")
+				 			completionTracker.html("You've completed " + countRead + " chapters from this section.<span> That puts you at " + calculatePercentage.toFixed(0)+ "% completion.</span>")
 				 		}
 				 	})
 			 	}
@@ -151,6 +174,9 @@ $(document).ready(function() {
 			 	calculateCompletion();
 
 				$(".card").click(function(){
+
+					initLoading();
+
 					var $this = $(this)
 
 					$this.addClass("reading")
@@ -169,6 +195,9 @@ $(document).ready(function() {
 					lessonContainer = lessonCard + ".html";
 
 					$("#lesson").load(lessonContainer , function(){
+
+						destroyLoading();
+
 						$("#lesson").css({
 							"transform" : "none",
 							"transition" : "1s"
@@ -181,6 +210,7 @@ $(document).ready(function() {
 						$("html").css("overflow" , "hidden")
 					});
 				})
+
 
 				$("#lesson").on("click" , "#complete-lesson", function(){
 					var $this = $(this)
@@ -308,7 +338,7 @@ $(document).ready(function() {
 					});
 
 					if($(window).width() >= 1150){
-						$(".nav").css("transform" , "none")
+						$(".nav").css("transform" , "translateX(-25px)")
 					}
 
 				});
@@ -326,7 +356,10 @@ $(document).ready(function() {
 					$(".nav").css({
 						"transform" : "none",
 						"pointer-events" : "auto"
-					})					
+					})
+					if($(window).width() >= 1150){
+						$(".nav").css("transform" , "translateX(-25px)")
+					}			
 				}
 
 			});

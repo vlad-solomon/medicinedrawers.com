@@ -18,14 +18,14 @@
 		.nav{
 			position: absolute;
 			z-index: 1;
-			top: 93px;
-			left: -50px;
+			top: 90px;
+			transform: translateX(-25px);
 			img{
 				cursor: pointer;
 				height: 20px;
 				transition: 400ms transform;
 				&:hover{
-					transform: scale(1.5);
+					transform: scale(1.2);
 				}
 			}
 			img:not(:first-child){
@@ -34,9 +34,9 @@
 
 			@media (max-width: 1150px){
 				top: auto;
-				// bottom: -100%;
 				bottom: 0;
 				left: 0;
+				transform: translateX(0);
 				position: fixed;
 				height: 70px;
 				width: 100%;
@@ -45,7 +45,6 @@
 				justify-content: space-around;
 				background-color: #fff;
 				box-shadow: 0px -25px 20px rgba($blue, 0.05);
-				// transition: 400ms;
 				img{
 					display: block !important;
 					height: auto;
@@ -149,6 +148,7 @@
 			position: relative;
 			margin-top: 50px;
 			margin-right: 50px;
+			margin-left: 25px;
 			width: 1125px;
 			h1{
 				font-size: 3rem;
@@ -171,13 +171,11 @@
 					letter-spacing: normal;
 				}
 			}
-			@media (max-width: 1600px){
-				width: 950px;
-			}
 
 			@media (max-width: 1150px){
 				margin-top: 0;
 				margin-right: 0;
+				margin-left: 0;
 				width: auto;
 			}
 

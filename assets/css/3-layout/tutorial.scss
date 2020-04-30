@@ -1,53 +1,100 @@
 #tutorial{
-	align-items: flex-end;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
 	transform: translate(100vw);
-	// transition: 1s;
 	opacity: 0;
 	position: fixed;
 	top: 0;
 	left: 0;
 
-	@media (max-width: 1200px){
+	@media (max-width: 1024px){
 		display: block;
 	}
 
 	#tutorial-content{
+		@media (max-width: 1400px){
+			box-sizing: border-box;
+			padding-right: 30px;
+		}
 		h1{
 			font-size: 3rem;
 			width: 615px;
 			letter-spacing: -0.025em;
 			line-height: 135%;
 			margin-bottom: 55px;
+			@media (max-width: 1400px){
+				font-size: 2.5rem;
+				margin-bottom: 35px;
+			}
+			@media (max-width: 1300px) {
+				font-size: 2rem;
+				width: 500px;
+			}
+			@media (max-width: 1024px){
+				box-sizing: border-box;
+				padding-right: 100px !important;
+			}
+			@media (max-width: 700px){
+				font-size: 1.8rem !important;
+				padding-right: 25px !important;
+			}
 		}
 		p{
 			font-size: 1.5rem;
 			line-height: 150%;
 			letter-spacing: -0.025em;
-			width: 880px;
+			width: 820px;
 			margin-bottom: 28px;
+			@media (max-width: 1400px){
+				font-size: 1.2rem;
+				width: 700px;
+			}
+			@media (max-width: 1300px){
+				width: 550px;
+			}
+			@media (max-width: 1100px){
+				width: 450px;
+			}
+			@media (max-width: 700px){
+				font-size: 0.875rem !important;
+				line-height: 165% !important;
+			}
 		}
 		#tutorial-image{
 			position: absolute;
 			height: 100%;
 			left: -100px;
 			bottom: 0;
-		}	
+			max-width: 1080px;
+			object-fit: contain;
+			object-position: bottom;
+			@media (max-width: 1600px){
+				left: 50px;
+			}
+			@media (max-width: 1150px){
+				left: -120px;
+			}
+			@media (max-width: 700px){
+				height: 400px !important;
+			}
+		}
 	}
 }
 
-// A L S O C H A N G E
-
-@media (max-width: 1200px){
+@media (max-width: 1024px){
 	#tutorial{
 		padding: 40px 0;
 		box-sizing: border-box;
 		height: auto;
 		#tutorial-content{
+			padding: 0;
 			h1{
 				box-sizing: border-box;
 				padding: 0 25px;
 				text-align: left;
-				font-size: 1.75rem;
+				font-size: 2rem;
+				width: 600px;
 				line-height: 130%;
 				margin: 0;
 				width: auto;
@@ -55,13 +102,16 @@
 			#tutorial-image{
 				display: block;
 				position: static;
-				height: 378px;
+				height: auto;
+				width: 40%;
+				max-width: 700px;
+				min-width: 350px;
 				margin: 0 auto;
 			}
 			p{
 				position: relative;
-				font-size: 0.875rem;
-				line-height: 165%;
+				font-size: 1.2rem;
+				line-height: 180%;
 				letter-spacing: -0.045em;
 				box-sizing: border-box;
 				padding: 0 25px;

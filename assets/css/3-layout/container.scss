@@ -2,22 +2,17 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	flex-direction: column;
-	justify-content: center;
 	height: 100%;
 	max-width: 1425px;
-	// border: 1px solid grey;
 	margin: 0 auto;
+	box-sizing: border-box;
 
-	@media(max-width: 1600px){
-		max-width: 1200px;
-	}
-	@media (max-width: 1300px){
-		max-width: 1000px;
+	@media (max-width: 1600px){
+		max-width: 100%;
+		padding: 0 50px;
 	}
 	@media (max-width: 1150px){
 		max-width: 100%;
-		box-sizing: border-box;
 		padding: 0 20px;
 	}
 }
