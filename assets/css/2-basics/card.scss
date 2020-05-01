@@ -10,6 +10,9 @@
 	transition: all 200ms, opacity 200ms linear 0s;
 	cursor: pointer;
 	opacity: 0;
+	@media (max-width: 1400px){
+		height: 210px
+	}
 	@media (max-width: 950px){
 		height: 200px;
 	}
@@ -43,6 +46,10 @@
 		border-radius: 2px;
 		transition: 200ms;
 		font-size: 0.8rem;
+		@media (max-width: 1400px){
+			font-size: 0.625rem;
+			padding: 5px 10px;
+		}
 		@media (max-width: 500px){
 			top: 7px;
 			left: 7px;
@@ -83,6 +90,9 @@
 		font-style: italic;
 		box-sizing: border-box;
 		padding-right: 20px;
+		@media (max-width: 1400px){
+			font-size: 1.3rem;
+		}
 		@media (max-width: 950px){
 			font-size: 1.5rem;
 		}

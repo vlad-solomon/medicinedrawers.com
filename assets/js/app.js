@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-	//TODO REMOVE HERO AND TUTORIAL AFTER DASHBOARD IS LOADED FOR THE FIRST TIME
-
-
 	function initLoading(){
 		const loadingIcon = "<img src='./assets/img/loading-icon.svg'>"
 		const loadingScreen = "<div class='loading-screen'>" +loadingIcon+ "</div>"
@@ -77,12 +74,18 @@ $(document).ready(function() {
 					setTimeout(function(){
 						$("#dashboard").css("position" , "absolute")
 					}, 1100)
+					setTimeout(function(){
+						$("#hero").remove();
+						$("#tutorial").remove();
+					}, 2000)
 					loadDashboard();
 				})
 			});
 		})
 	} else{
 		loadDashboard();
+		$("#hero").remove();
+		$("#tutorial").remove();
 		$("#dashboard").css({
 			"transform" : "none",
 			"opacity" : "1",
@@ -202,12 +205,24 @@ $(document).ready(function() {
 							"transform" : "none",
 							"transition" : "1s"
 						});
+						setTimeout(function(){
+							$("#lesson").css("overflow-y" , "auto")
+						}, 1000)
 						var cardSelector = $(this).children(".container").attr("data-lesson").replace("-lesson" , "")
 						if($('.card[data-lesson="pages/' +cardSelector+ '"]').hasClass("read")){
 							$("#lesson .side-menu .modal-button").remove();
 							$("#lesson .nav .modal-button").css("pointer-events" , "none").attr("src" , "./assets/img/completed.svg")
 						}
-						$("html").css("overflow" , "hidden")
+						$("body").css("overflow" , "hidden")
+						if($(window).width() <= 1150){
+							$(".nav").css("transform" , "translateY(70px)")
+							setTimeout(function(){
+								$(".nav").css({
+									"transform" : "none",
+									"transition" : "400ms"
+								})
+							}, 600)
+						}
 					});
 				})
 
@@ -238,26 +253,22 @@ $(document).ready(function() {
 					calculateCompletion()
 				});
 
-				// $("#lesson").on("click" , ".side-menu span a" , function(event){
-				// 	var test = $(this).attr("href").replace("#" , "");
-				// 	var target = $('.lesson-content h1[id="' +test+ '"]')
-
-				// 	event.peventDefault()
-				// 	$("#lesson").animate({
-				// 		scrollTop: target.offset().top
-				// 	}, 1000)
-				// });
-
 				$("#lesson").on("click" , "#back", function(){
 					$("#lesson").css({
 						"transform" : "translateX(100vw)",
+						"overflow-y" : "hidden"
 					})
 					$("#dashboard").css("transform" , "none")
 					setTimeout(function(){
-						$("html").removeAttr("style")
+						$("body").removeAttr("style")
 						$("#lesson").children().remove();
 						$("#dashboard").css("pointer-events" , "auto")
 					}, 1000)
+
+					if($(window).width() <= 1150){
+						$(".nav").remove();
+					}
+
 				});
 
 				$("#lesson").on("click" , "#chapters-button" , function(){
@@ -361,7 +372,6 @@ $(document).ready(function() {
 						$(".nav").css("transform" , "translateX(-25px)")
 					}			
 				}
-
 			});
 		}
 	}
