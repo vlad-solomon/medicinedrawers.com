@@ -7,5 +7,6 @@ h1{
 p{
 	font-family: Montserrat Regular;
 	font-size: 1.125rem;
-	color: transparentize($blue, 0.2);
+	color: $blue;
+	opacity: 0.8;
 }

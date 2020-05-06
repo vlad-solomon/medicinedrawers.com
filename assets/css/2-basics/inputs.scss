@@ -1,6 +1,9 @@
 label{
 	span{
 		opacity: 0;
+		pointer-events: none;
+		font-size: 0;
+		margin-left: -3px;
 	}
 }
 
@@ -17,7 +20,8 @@ input{
 	color: $blue;
 	text-transform: capitalize;
 	&::placeholder{
-		color: transparentize($blue, 0.5);
+		color: $blue;
+		opacity: 0.5;
 		font-style: italic;
 		text-transform: none;
 	}

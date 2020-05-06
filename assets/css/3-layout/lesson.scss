@@ -5,7 +5,6 @@
 	background-color: #fff;
 	max-width: 100%;
 	transform: translateX(100vw);
-	// overflow-y: auto;
 	overflow-x: hidden;
 	overflow-y: hidden;
 	display: block;
@@ -21,15 +20,23 @@
 			z-index: 1;
 			top: 90px;
 			transform: translateX(-25px);
-			img{
+			svg{
 				cursor: pointer;
 				height: 20px;
 				transition: 400ms transform;
 				&:hover{
 					transform: scale(1.2);
 				}
+				&.completed{
+					fill: $blue;
+				}
 			}
-			img:not(:first-child){
+			svg:first-child{
+				@media (min-width: 1150px){
+					width: 20px;
+				}
+			}
+			svg:not(:first-child){
 				display: none;
 			}
 
@@ -46,7 +53,7 @@
 				justify-content: space-around;
 				background-color: #fff;
 				box-shadow: 0px -25px 20px rgba($blue, 0.05);
-				img{
+				svg{
 					display: block !important;
 					height: auto;
 					padding: 15px;
@@ -54,7 +61,8 @@
 			}
 		}
 		.side-menu{
-			width: 280px;
+			// width: 280px;
+			width: 300px;
 			margin-top: 165px;
 			order: 1;
 			position: sticky;
@@ -74,14 +82,17 @@
 				background-color: #fff;
 				.quick-chapters{
 					margin: 35px 0 0 25px;
-					width: fit-content !important;
+					width: auto !important;
 					border: none !important;
 					border-radius: unset !important;
 					background-color: transparent !important;
+					max-height: unset !important;
+					padding: 0 0 100px 0 !important;
 					#close-chapters{
 						display: block !important;
-						margin-bottom: 25px;
-						height: 20px;
+						margin-bottom: 35px;
+						height: 25px;
+						width: 25px;
 					}
 				}
 				.button{
@@ -89,13 +100,20 @@
 				}
 			}
 			.quick-chapters{
-				background-color: #fff;
 				box-sizing: border-box;
 				border: 1px solid $blue;
 				border-radius: 2px;
 				width: 100%;
 				padding: 15px;
 				margin-bottom: 15px;
+				max-height: 350px;
+				overflow: auto;
+				&::-webkit-scrollbar{
+					width: 5px;
+				}
+				&::-webkit-scrollbar-thumb{
+					background-color: $blue;
+				}
 				#close-chapters{
 					display: none;
 					cursor: pointer;
@@ -109,6 +127,7 @@
 					display: block;
 					margin-bottom: 25px;
 					text-decoration: none;
+					line-height: 120%;
 					&:hover{
 						text-decoration: underline;
 					}
@@ -116,7 +135,7 @@
 						margin: 0;
 					}
 					&.nested{
-						margin-left: 25px 
+						margin-left: 10px;
 					}
 
 					@media (max-width: 1400px){
@@ -165,10 +184,28 @@
 				line-height: 180%;
 				text-align: justify;
 				letter-spacing: 0.02em;
-				margin-bottom: 30px;
-				color: transparentize($blue, 0.2);
+				margin-bottom: 20px;
 				@media (max-width: 500px){
 					letter-spacing: normal;
+				}
+			}
+			.list{
+				margin: 0 0 20px 25px;
+				p{
+					margin-bottom: 5px;
+					&::before{
+						content: ' ';
+						display: inline-block;
+						height: 10px;
+						width: 10px;
+						box-sizing: border-box;
+						border: 1px solid $blue;
+						margin-right: 10px;
+						border-radius: 2px;
+					}
+				}
+				@media (max-width: 375px){
+					margin-left: 0;
 				}
 			}
 

@@ -9,7 +9,7 @@
 	width: 100%;
 	background-color: rgba(255,255,255,0.7);
 	box-sizing: border-box;
-	padding: 0 50px;
+	padding: 0 20px;
 	z-index: 1;
 	opacity: 0;
 	transition: 400ms;
@@ -26,8 +26,161 @@
 		border: 1px solid $blue;
 		border-radius: 2px;
 		box-sizing: border-box;
-		padding: 30px 40px;
+		padding: 30px;
 		box-shadow: 0 5px 5px rgba($blue , 0.05);
+		&.change-name{
+			border: none;
+			padding: unset;
+			box-shadow: none;
+			background-color: transparent;
+			input{
+				width: 100%;
+			}
+			.buttons-wrapper{
+				display: flex;
+				width: 100%;
+				margin-top: 15px;
+				@media (max-width: 615px){
+					display: block;
+					.button:first-child{
+						margin-bottom: 10px;
+					}
+				}
+				.button{
+					flex: 1;
+					font-size: 1rem;
+					&:first-child{
+						color: $blue;
+						border: 1px solid $blue;
+						background-color: #fff;
+						margin-right: 20px;
+					}
+					&:last-child{
+						opacity: 0;
+						pointer-events: none;
+					}
+					@media (max-width: 500px){
+						font-size: 0.8rem;
+					}
+				}
+			}
+		}
+		&.settings{
+			position: relative;
+			display: block;
+			span{
+				display: block;
+				text-align: left;
+				margin-bottom: 10px;
+			}
+			p{
+				font-size: 0.8125rem;
+				opacity: 0.8;
+				margin-bottom: 20px;
+				line-height: 160%;
+			}
+			#close-settings{
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				height: 15px;
+				width: 15px;
+				cursor: pointer;
+				transition: 200ms;
+				&:hover{
+					transform: scale(1.2);
+				}
+			}
+			.button{
+				display: inline-block;
+				height: unset;
+				width: unset;
+				padding: 15px 40px;
+				font-size: 1rem;
+				background-color: unset;
+				border: 1px solid $blue;
+				color: $blue;
+				@media (max-width: 615px){
+					width: 100%;
+					font-size: 0.8rem;
+					padding-right: 15px;
+					padding-left: 15px;
+				}
+				&#delete-data{
+					background-color: $blue;
+					color: #fff;
+				}
+			}
+			.theme-grid{
+				display: grid;
+				gap: 15px;
+				grid-template-columns: repeat(4 , 1fr);
+				margin-bottom: 20px;
+				@media (max-width: 615px){
+					gap: 10px;
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.theme{
+					position: relative;
+					font-family: Montserrat Regular;
+					font-size: 0.625rem;
+					text-align: center;
+					height: 45px;
+					border-radius: 2px;
+					cursor: pointer;
+					transition: 200ms;
+					overflow: hidden;
+					&.selected-theme{
+						&::before{
+							content: '✓';
+							font-size: 13px;
+							font-weight: bold;
+							color: currentColor;
+							display: block;
+							height: 15px;
+							width: 25px;
+							background-color: #fff;
+							position: absolute;
+							top: 1px;
+							right: 1px;
+							border-bottom-left-radius: 2px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+						&:hover{
+							box-shadow: none;
+						}
+					}
+					&#default{
+						color: $blue;
+						background-color: $blue;
+					}
+					&#green{
+						color: $green;
+						background-color: $green;
+					}
+					&#orange{
+						color: $orange;
+						background-color: $orange;
+					}
+					&#dark{
+						color: $dark-background;
+						&.selected-theme{
+							&::before{
+								top: 0;
+								right: 0;
+							}
+						}
+						background-color: $dark-background;
+					}
+					&:hover{
+						color: transparent;
+						box-shadow: inset 0px 0px 0px 4px rgba(255,255,255,0.2);
+					}
+				}
+			}
+		}
 		@media (max-width: 375px){
 			padding: 25px 20px;
 		}
@@ -61,8 +214,11 @@
 				border: 1px solid $blue;
 			}
 			@media (max-width: 500px){
-				font-size: 0.625rem;
+				font-size: 0.8rem;
 				height: 36px;
+			}
+			@media (max-width: 375px){
+				font-size: 0.7rem;
 			}
 		}
 	}

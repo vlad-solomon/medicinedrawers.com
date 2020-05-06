@@ -1,0 +1,160 @@
+.dark-theme{
+	background-color: $dark-background;
+	h1,
+	p,
+	.drawer-title,
+	.card,
+	.card.reading::before,
+	.card.read::before{
+		color: $dark;
+		border-color: $dark;
+	}
+	.completion-tracker{
+		color: $dark !important;
+	}
+	.card.read::before{
+		color: #fff;
+		background-color: transparent;
+	}
+	.card:hover,
+	.card.reading:hover::before,
+	.card.read:hover::before{
+		color: $dark-background;
+		background-color: $dark;
+		border-color: $dark-background;
+	}
+	.loading-screen{
+		background-color: $dark-loading;
+	}
+	#user-name:hover{
+		border-color: $dark !important;
+	}
+	input{
+		border-color: $dark;
+		background-color: $dark-background;
+		color: $dark;
+		&::placeholder{
+			color: $dark;
+		}
+	}
+	.modal-overlay{
+		background-color: rgba($dark-background,0.7);
+	}
+	.modal{
+		background-color: $dark-background;
+		border-color: $dark;
+		span{
+			color: $dark;
+		}
+		.button{
+			background-color: $dark;
+			color: $dark-background;
+			&#close-modal{
+				color: $dark;
+				border-color: $dark;
+				background-color: transparent;
+			}
+		}
+	}
+	.modal.change-name{
+		.buttons-wrapper{
+			.button{
+				&:first-child{
+					color: $dark;
+					border-color: $dark;
+					background-color: $dark-background;
+				}
+				&:last-child{
+					background-color: $dark;
+				}
+			}
+		}
+	}
+	.modal.settings{
+		#close-settings{
+			path{
+				stroke: $dark;
+			}
+		}
+		#dark{
+			border: 1px solid $dark;
+			box-sizing: border-box;
+		}
+		.button{
+			border-color: $dark;
+			color: $dark;
+			&#delete-data{
+				background-color: $dark;
+				color: $dark-background;
+			}
+		}
+	}
+	.drawer-title{
+		svg{
+			path{
+				stroke: $dark;
+			}
+		}
+	}
+	#lesson{
+		background-color: $dark-background;
+		.container{
+			.side-menu{
+				@media (max-width: 1150px){
+					background-color: $dark-background;
+				}
+			}
+			.nav{
+				@media (max-height: 1150px){
+					background-color: $dark-background;
+					box-shadow: 0px -25px 20px rgba(0, 0, 0, 0.15)
+				}
+				svg{
+					&.completed{
+						fill: $dark;
+					}
+					path{
+						stroke: $dark;
+					}
+				}
+			}
+		}
+		.side-menu{
+			.button{
+				color: $dark-background;
+				background-color: $dark;
+				border-color: $dark;
+				&:hover{
+					color: $dark;
+					background-color: $dark-background;
+				}
+			}
+			.quick-chapters{
+				border-color: $dark;
+				&::-webkit-scrollbar-thumb{
+					background-color: $dark;
+				}
+				a{
+					color: $dark;
+				}
+			}
+		}		
+	}
+	.list{
+		p{
+			&::before{
+				border-color: $dark !important;
+			}	
+		}
+	}
+	#close-chapters{
+		path{
+			stroke: $dark;
+		}
+	}
+	#settings{
+		path{
+			stroke: $dark;
+		}
+	}
+}

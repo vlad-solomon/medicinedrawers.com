@@ -1,0 +1,134 @@
+.green-theme{
+	h1,
+	p,
+	.drawer-title,
+	.card,
+	.card.reading::before,
+	.card.read::before{
+		color: $green;
+		border-color: $green;
+	}
+	.completion-tracker{
+		color: $green !important;
+	}
+	.card.read::before{
+		color: #fff;
+		background-color: $green;
+	}
+	.card:hover,
+	.card.reading:hover::before,
+	.card.read:hover::before{
+		color: #fff;
+		background-color: $green;
+		border-color: #fff;
+	}
+	.loading-screen{
+		background-color: $green;
+	}
+	#user-name:hover{
+		border-color: $green !important;
+	}
+	input{
+		border-color: $green;
+		color: $green;
+		&::placeholder{
+			color: $green;
+		}
+	}
+	.modal{
+		border-color: $green;
+		span{
+			color: $green;
+		}
+		.button{
+			background-color: $green;
+			&#close-modal{
+				color: $green;
+				border-color: $green;
+			}
+		}
+	}
+	.modal.change-name{
+		.buttons-wrapper{
+			.button{
+				&:first-child{
+					color: $green;
+					border-color: $green;
+				}
+				&:last-child{
+					background-color: $green;
+				}
+			}
+		}
+	}
+	.modal.settings{
+		#close-settings{
+			path{
+				stroke: $green;
+			}
+		}
+		.button{
+			border-color: $green;
+			color: $green;
+			&#delete-data{
+				background-color: $green;
+			}
+		}
+	}
+	.drawer-title{
+		svg{
+			path{
+				stroke: $green;
+			}
+		}
+	}
+	#lesson{
+		.container{
+				.nav{
+					svg{
+						&.completed{
+							fill: $green;
+						}
+						path{
+							stroke: $green;
+						}
+					}
+				}
+			}
+		.side-menu{
+			.button{
+				background-color: $green;
+				border-color: $green;
+				&:hover{
+					color: $green;
+				}
+			}
+			.quick-chapters{
+				border-color: $green;
+				&::-webkit-scrollbar-thumb{
+					background-color: $green;
+				}
+				a{
+					color: $green;
+				}
+			}
+		}		
+	}
+	.list{
+		p{
+			&::before{
+				border-color: $green !important;
+			}	
+		}
+	}
+	#close-chapters{
+		path{
+			stroke: $green;
+		}
+	}
+	#settings{
+		path{
+			stroke: $green;
+		}
+	}
+}

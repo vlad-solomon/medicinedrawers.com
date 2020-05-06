@@ -1,0 +1,134 @@
+.orange-theme{
+	h1,
+	p,
+	.drawer-title,
+	.card,
+	.card.reading::before,
+	.card.read::before{
+		color: $orange;
+		border-color: $orange;
+	}
+	.completion-tracker{
+		color: $orange !important;
+	}
+	.card.read::before{
+		color: #fff;
+		background-color: $orange;
+	}
+	.card:hover,
+	.card.reading:hover::before,
+	.card.read:hover::before{
+		color: #fff;
+		background-color: $orange;
+		border-color: #fff;
+	}
+	.loading-screen{
+		background-color: $orange;
+	}
+	#user-name:hover{
+		border-color: $orange !important;
+	}
+	input{
+		border-color: $orange;
+		color: $orange;
+		&::placeholder{
+			color: $orange;
+		}
+	}
+	.modal{
+		border-color: $orange;
+		span{
+			color: $orange;
+		}
+		.button{
+			background-color: $orange;
+			&#close-modal{
+				color: $orange;
+				border-color: $orange;
+			}
+		}
+	}
+	.modal.change-name{
+		.buttons-wrapper{
+			.button{
+				&:first-child{
+					color: $orange;
+					border-color: $orange;
+				}
+				&:last-child{
+					background-color: $orange;
+				}
+			}
+		}
+	}
+	.modal.settings{
+		#close-settings{
+			path{
+				stroke: $orange;
+			}
+		}
+		.button{
+			border-color: $orange;
+			color: $orange;
+			&#delete-data{
+				background-color: $orange;
+			}
+		}
+	}
+	.drawer-title{
+		svg{
+			path{
+				stroke: $orange;
+			}
+		}
+	}
+	#lesson{
+		.container{
+			.nav{
+				svg{
+					&.completed{
+						fill: $orange;
+					}
+					path{
+						stroke: $orange;
+					}
+				}
+			}
+		}
+		.side-menu{
+			.button{
+				background-color: $orange;
+				border-color: $orange;
+				&:hover{
+					color: $orange;
+				}
+			}
+			.quick-chapters{
+				border-color: $orange;
+				&::-webkit-scrollbar-thumb{
+					background-color: $orange;
+				}
+				a{
+					color: $orange;
+				}
+			}
+		}		
+	}
+	.list{
+		p{
+			&::before{
+				border-color: $orange !important;
+			}	
+		}
+	}
+	#close-chapters{
+		path{
+			stroke: $orange;
+		}
+	}
+	#settings{
+		path{
+			stroke: $orange;
+		}
+	}
+}
