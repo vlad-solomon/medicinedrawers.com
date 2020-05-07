@@ -49,6 +49,10 @@ table {
   border-spacing: 0;
 }
 
+*:not(.drawer-title)::selection {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 @font-face {
   font-family: "Montserrat Bold";
   src: url("../fonts/Montserrat-Bold.ttf");
@@ -250,6 +254,7 @@ input::placeholder {
 }
 
 .drawer {
+  position: relative;
   margin-bottom: 30px;
 }
 @media (max-width: 500px) {
@@ -258,7 +263,7 @@ input::placeholder {
   }
 }
 .drawer .drawer-title {
-  display: block;
+  display: inline-block;
   margin-bottom: 15px;
   font-family: Montserrat Bold;
   font-size: 3rem;
@@ -267,6 +272,31 @@ input::placeholder {
   opacity: 0.8;
   cursor: pointer;
   transition: 200ms;
+}
+.drawer .drawer-title.disabled {
+  pointer-events: none;
+  position: relative;
+  opacity: 0.5;
+  margin-top: 20px;
+}
+.drawer .drawer-title.disabled::after {
+  content: "Coming soon";
+  position: absolute;
+  top: -25px;
+  left: 0;
+  font-size: 0.625rem;
+  white-space: nowrap;
+  font-family: Montserrat Regular;
+  letter-spacing: normal;
+  border: 1px solid;
+  border-color: currentColor;
+  border-radius: 2px;
+  padding: 5px 8px;
+}
+@media (max-width: 500px) {
+  .drawer .drawer-title.disabled::after {
+    font-size: 0.5rem;
+  }
 }
 @media (max-width: 1400px) {
   .drawer .drawer-title {
@@ -319,6 +349,9 @@ input::placeholder {
   grid-template-columns: repeat(4, 1fr);
   overflow: hidden;
   height: 0;
+}
+.drawer .cards-wrapper.expanded {
+  overflow: visible;
 }
 @media (max-width: 1300px) {
   .drawer .cards-wrapper {
@@ -1095,6 +1128,11 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.875rem;
   letter-spacing: -0.025em;
 }
+@media (max-width: 615px) {
+  #dashboard .greeting p {
+    font-size: 1rem;
+  }
+}
 @media (max-width: 500px) {
   #dashboard .greeting p {
     font-size: 0.75rem;
@@ -1341,10 +1379,18 @@ body::-webkit-scrollbar-thumb {
   letter-spacing: 0.02em;
   margin-bottom: 20px;
 }
+#lesson .container .lesson-content p.source {
+  opacity: 0.5;
+  font-style: italic;
+  margin-bottom: 45px;
+}
 @media (max-width: 500px) {
   #lesson .container .lesson-content p {
     letter-spacing: normal;
   }
+}
+#lesson .container .lesson-content a {
+  color: currentColor;
 }
 #lesson .container .lesson-content .list {
   margin: 0 0 20px 25px;

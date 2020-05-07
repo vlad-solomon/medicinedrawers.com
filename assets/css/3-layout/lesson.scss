@@ -191,9 +191,17 @@
 				text-align: justify;
 				letter-spacing: 0.02em;
 				margin-bottom: 20px;
+				&.source{
+					opacity: 0.5;
+					font-style: italic;
+					margin-bottom: 45px;
+				}
 				@media (max-width: 500px){
 					letter-spacing: normal;
 				}
+			}
+			a{
+				color: currentColor;
 			}
 			.list{
 				margin: 0 0 20px 25px;

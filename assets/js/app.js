@@ -235,29 +235,24 @@ $(document).ready(function() {
 				// Accordion function that runs when a drawer is opened or closed
 				$(".drawer-title").click(function(){
 					let cardsWrapper = $(this).next()
-				
+
 					if($(this).hasClass("active")){
 						$(this).removeClass("active")
 						$(this).children("svg").removeClass("rotate")
 						cardsWrapper.animate({height: "0px"}, 200);
+						cardsWrapper.removeClass("expanded")
 						cardsWrapper.children().removeClass("visible")
-						setTimeout(function(){
-							cardsWrapper.css("overflow" , "hidden")
-						}, 201)
+
 					} else{
 						$(this).addClass("active")
 						$(this).children("svg").addClass("rotate")
 
-
 						let cardsWrapperExpanded = cardsWrapper.get(0).scrollHeight + "px"
 
 						cardsWrapper.animate({height: cardsWrapperExpanded,}, 200);
-						cardsWrapper.css("overflow", "visible")
+						cardsWrapper.addClass("expanded")
 
 						cardsWrapper.children().addClass("visible")
-						setTimeout(function(){
-							cardsWrapper.css("overflow" , "visible")
-						}, 201)
 					}
 				})
 

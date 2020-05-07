@@ -1,10 +1,11 @@
 .drawer{
+	position: relative;
 	margin-bottom: 30px;
 	@media (max-width: 500px){
 		margin-bottom: 25px;
 	}
 	.drawer-title{
-		display: block;
+		display: inline-block;
 		margin-bottom: 15px;
 		font-family: Montserrat Bold;
 		font-size: 3rem;
@@ -13,6 +14,29 @@
 		opacity: 0.8;
 		cursor: pointer;
 		transition: 200ms;
+		&.disabled{
+			pointer-events: none;
+			position: relative;
+			opacity: 0.5;
+			margin-top: 20px;
+			&::after{
+				content: "Coming soon";
+				position: absolute;
+				top: -25px;
+				left: 0;
+				font-size: 0.625rem;
+				white-space: nowrap;
+				font-family: Montserrat Regular;
+				letter-spacing: normal;
+				border: 1px solid;
+				border-color: currentColor;
+				border-radius: 2px;
+				padding: 5px 8px;
+				@media (max-width: 500px){
+					font-size: 0.5rem;
+				}
+			}
+		}
 		@media (max-width: 1400px){
 			font-size: 2.5rem;
 		}
@@ -59,11 +83,11 @@
 		display: grid;
 		gap: 15px;
 		grid-template-columns: repeat(4, 1fr);
-		// max-height: 0;
 		overflow: hidden;
 		height: 0;
-		// transition: 200ms;
-
+		&.expanded{
+			overflow: visible;
+		}
 		@media (max-width: 1300px){
 			grid-template-columns: repeat(3, 1fr);
 		}
