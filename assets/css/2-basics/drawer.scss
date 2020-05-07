@@ -59,9 +59,10 @@
 		display: grid;
 		gap: 15px;
 		grid-template-columns: repeat(4, 1fr);
-		max-height: 0;
+		// max-height: 0;
 		overflow: hidden;
-		transition: 200ms;
+		height: 0;
+		// transition: 200ms;
 
 		@media (max-width: 1300px){
 			grid-template-columns: repeat(3, 1fr);

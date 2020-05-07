@@ -232,31 +232,42 @@ $(document).ready(function() {
 				// Display the users name
 				$("#user-name").text(localStorage.getItem("userName"))
 
-				// Define the drawer
-				let drawer = document.getElementsByClassName("drawer-title");
+				// Accordion function that runs when a drawer is opened or closed
+				$(".drawer-title").click(function(){
+					let cardsWrapper = $(this).next()
+				
+					if($(this).hasClass("active")){
+						$(this).removeClass("active")
+						$(this).children("svg").removeClass("rotate")
+						cardsWrapper.animate({height: "0px"}, 200);
+						cardsWrapper.children().removeClass("visible")
+						setTimeout(function(){
+							cardsWrapper.css("overflow" , "hidden")
+						}, 201)
+					} else{
+						$(this).addClass("active")
+						$(this).children("svg").addClass("rotate")
 
-				// Accordion function that opens / closes the drawers
-				for (k = 0; k < drawer.length; k++) {
 
-					drawer[k].addEventListener("click", function() {
-						this.children[0].classList.toggle("rotate");
-						this.classList.toggle("active");
-						let cardsWrapper = this.nextElementSibling;
-						if (cardsWrapper.style.maxHeight){
-							cardsWrapper.style.maxHeight = null;
-							cardsWrapper.style.overflow = "hidden";
-						} else {
-							cardsWrapper.style.maxHeight = cardsWrapper.scrollHeight + "px";
-							cardsWrapper.style.overflow = "visible";
-						}
+						let cardsWrapperExpanded = cardsWrapper.get(0).scrollHeight + "px"
 
-						// Toggle the visibilty of the cards in the drawer
-						$(this).siblings(".cards-wrapper").children(".card").toggleClass("visible");
-						// Toggle the visibily of the completion tracker in the drawer
-						$(this).siblings(".cards-wrapper").children(".completion-tracker").toggleClass("visible");
-					});
+						cardsWrapper.animate({height: cardsWrapperExpanded,}, 200);
+						cardsWrapper.css("overflow", "visible")
 
-				}
+						cardsWrapper.children().addClass("visible")
+						setTimeout(function(){
+							cardsWrapper.css("overflow" , "visible")
+						}, 201)
+					}
+				})
+
+				// When the user resizes the window close the drawer
+				$(window).resize(function(){
+					$(".drawer-title").removeClass("active");
+					$(".drawer-title").children("svg").removeClass("rotate");
+					$(".cards-wrapper").removeAttr("style")
+					$(".cards-wrapper").children().removeClass("visible")
+				})
 
 				// Define the locally storred arrays of "reading" and "read" cards
 				let readingCards = localStorage.getItem("readingCards")!==null?localStorage.getItem("readingCards"):'';
@@ -288,7 +299,7 @@ $(document).ready(function() {
 				 		let calculatePercentage = ((100 * countRead) / countTotal).toFixed(0) + "%"
 
 				 		if(countRead == 0){
-				 			completionTracker.html("You haven't finished any lesson from this section")
+				 			completionTracker.html("You haven't finished any lesson from this section.<span> Start by clicking one of the cards below.</span>")
 				 		} else if(countRead == countTotal){
 				 			completionTracker.html("You have completed this section")
 				 		} else if(countRead == 1){

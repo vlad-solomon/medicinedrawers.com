@@ -3,6 +3,12 @@ body{
 	position: relative;
 	height: 100vh;
 	overflow-x: hidden;
+	&::-webkit-scrollbar{
+		width: 5px;
+	}
+	&::-webkit-scrollbar-thumb{
+		background-color: #bbb;
+	}
 }
 
 :root{

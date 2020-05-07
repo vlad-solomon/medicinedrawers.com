@@ -8,6 +8,12 @@
 	overflow-x: hidden;
 	overflow-y: hidden;
 	display: block;
+	&::-webkit-scrollbar{
+		width: 5px;
+	}
+	&::-webkit-scrollbar-thumb{
+		background-color: #bbb;
+	}
 	.container{
 		display: flex;
 		flex-direction: row;

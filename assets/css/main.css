@@ -317,9 +317,8 @@ input::placeholder {
   display: grid;
   gap: 15px;
   grid-template-columns: repeat(4, 1fr);
-  max-height: 0;
   overflow: hidden;
-  transition: 200ms;
+  height: 0;
 }
 @media (max-width: 1300px) {
   .drawer .cards-wrapper {
@@ -659,6 +658,14 @@ body {
   position: relative;
   height: 100vh;
   overflow-x: hidden;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 5px;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #bbb;
 }
 
 :root {
@@ -1141,6 +1148,12 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   display: block;
+}
+#lesson::-webkit-scrollbar {
+  width: 5px;
+}
+#lesson::-webkit-scrollbar-thumb {
+  background-color: #bbb;
 }
 #lesson .container {
   display: flex;
