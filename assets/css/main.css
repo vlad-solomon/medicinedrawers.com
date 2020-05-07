@@ -664,7 +664,7 @@ input::placeholder {
   animation: pulse 2s ease-in-out infinite;
 }
 .loading-screen:before {
-  content: "Pre-release - May 2020";
+  content: "Version 1.1.2020";
   position: absolute;
   display: block;
   bottom: 25px;
